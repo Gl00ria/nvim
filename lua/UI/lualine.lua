@@ -68,7 +68,7 @@ local progress = function()
   local index = math.ceil(line_ratio * #chars)
   return chars[index]
 end
-
+--[[
 local nvim_gps = function()
   local gps_location = gps.get_location()
   if gps_location == "error" then
@@ -77,7 +77,7 @@ local nvim_gps = function()
     return gps.get_location()
   end
 end
-
+]]
 -- display activelsp
 local activelsp ={
   function ()
@@ -147,7 +147,7 @@ lualine.setup {
     lualine_a = { mode, branch },
     lualine_b = { diagnostics },
     lualine_c = {
-      { nvim_gps, cond = hide_in_width },
+      { gps.get_location, cond = gps.is_available },
     },
     lualine_x = {python_env, diff, treesitter, activelsp, "fileformat", filetype},
     lualine_y = {location},
