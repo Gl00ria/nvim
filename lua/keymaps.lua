@@ -61,8 +61,8 @@ keymap('n', '<C-Right>', '<cmd>vertical resize -2<cr>', opts)
 keymap('n', '<C-Left>', '<cmd>vertical resize +2<cr>', opts)
 
 -- Naviagate buffers
-keymap('n', '<S-l>', '<cmd>bnext<cr>', opts)
-keymap('n', '<S-h>', '<cmd>bprevious<cr>', opts)
+-- keymap('n', '<S-l>', '<cmd>bnext<cr>', opts)
+-- keymap('n', '<S-h>', '<cmd>bprevious<cr>', opts)
 
 -- Colorschemes
 keymap('n', '11', '<cmd>colorscheme gruvbox<cr>', opts)

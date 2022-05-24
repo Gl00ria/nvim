@@ -191,6 +191,7 @@ return packer.startup(function(use)
   use { "nvim-lualine/lualine.nvim", config = get_UI("lualine") } -- statusline
   use { "akinsho/bufferline.nvim", config = get_UI("bufferline") } -- bufferline
   use { "dhruvasagar/vim-table-mode", config = get_UI("tablemode") }
+  use{ "ghillb/cybu.nvim", branch = "v1.x", config = get_UI("cybu") } -- cycle between buffers
   use { "folke/todo-comments.nvim", config = get_UI("todo-comments") } -- comment utility
   use { "gfeiyou/command-center.nvim", config = get_UI("command_center") }
   use { "lukas-reineke/indent-blankline.nvim", config = get_UI("indentline") } -- indentation guides
@@ -235,6 +236,7 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim" }
   use { "Shatur/neovim-ayu" }
   use { "rose-pine/neovim" }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
