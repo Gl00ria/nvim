@@ -74,7 +74,7 @@ return packer.startup(function(use)
   use { "nvim-lua/popup.nvim" } -- an implementation of the Popup API from vim in Neovim
   use { "MunifTanjim/nui.nvim" } -- required by 'neo-tree'
   use { "kyazdani42/nvim-web-devicons" } -- keep it always on top of plugins
-  use { "nvim-neo-tree/neo-tree.nvim", config = get_core("neotree") }
+  use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = get_core("neotree") }
   use { "lewis6991/impatient.nvim", config = get_core("impatient") } -- improve Startup time
   use { "windwp/nvim-autopairs", config = get_core("autopairs") } -- autopairs
   use { "numToStr/Comment.nvim", config = get_core("comment") } -- comment Utility
@@ -89,7 +89,7 @@ return packer.startup(function(use)
 
   -- Ftplugin
   use { "mfussenegger/nvim-jdtls", ft = "java" } -- Java
-  use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", ft = "markdown" } -- Markdown
+  use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, } -- Markdown
   use { "p00f/clangd_extensions.nvim", config = get_core("clangd_extensions"), ft = { "c", "cpp", "objc", "objcpp" } }
 
   -- Telescope
