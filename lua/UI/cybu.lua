@@ -33,5 +33,3 @@ cybu.setup {
     },
   },
 }
-vim.keymap.set("n", "L", "<Plug>(CybuNext)")
-vim.keymap.set("n", "H", "<Plug>(CybuPrev)")
