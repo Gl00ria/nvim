@@ -207,6 +207,7 @@ return packer.startup(function(use)
   -- use { "dstein64/vim-startuptime" } -- :StartupTime
   use { "phaazon/hop.nvim", config = get_extra("hop") } -- jumb to any word-char in the document
   use { "monaqa/dial.nvim", config = get_extra("dial") } -- increment/decrement
+  use { "mizlan/iswap.nvim", config = get_extra("iswap") }
   -- use { "nacro90/numb.nvim", config = get_extra("numb") } -- peek a line without jumping to that line
   use { "unblevable/quick-scope", config = get_extra("quickscope") } -- highlight when using 'F, T etc...'
   use { "RishabhRD/nvim-cheat.sh", requires = { "RishabhRD/popfix"} } -- cheat sheet
