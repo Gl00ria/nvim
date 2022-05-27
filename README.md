@@ -4,7 +4,6 @@
 # Take a Peek
 ![ 1 ](https://github.com/Gl00ria/nvim/blob/main/screenshots/1.png)
 ![ 3 ](https://github.com/Gl00ria/nvim/blob/main/screenshots/3.png)
-![ 5 ](https://github.com/Gl00ria/nvim/blob/main/screenshots/5.png)
 
 [More here](https://github.com/Gl00ria/nvim/tree/main/screenshots).
 
@@ -70,7 +69,7 @@ $ git clone https://github.com/Gl00ria/nvim.git "$env:LOCALAPPDATA\nvim"
 - Find more [here](https://github.com/williamboman/nvim-lsp-installer#available-lsps)
 
 
-### Keybindings/Keymapings or keyWhatever:
+### Keybindings/Keymaps or keyWhatever:
 We love plugins, plugins love to have one or more keymap, but our fingers keep forgetting where to go! ...Soo...?
 here how it goes to satisfy both the plugins & our fingers, press `<leader>cc` to trigger the command center, pretty C00L HuH?
 
