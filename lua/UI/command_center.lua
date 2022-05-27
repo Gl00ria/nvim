@@ -1,4 +1,8 @@
-local command_center = require("command_center")
+-- use a protected call so we don't error out on first use
+local status_ok, command_center = pcall(require, "command_center")
+if not status_ok then
+  return
+end
 local opts = { noremap = true, silent = true }
 
 command_center.add({
