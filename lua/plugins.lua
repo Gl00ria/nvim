@@ -77,6 +77,7 @@ return packer.startup(function(use)
   use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = get_core("neotree") }
   use { "lewis6991/impatient.nvim", config = get_core("impatient") } -- improve Startup time
   use { "windwp/nvim-autopairs", config = get_core("autopairs") } -- autopairs
+  use { "Pocco81/AutoSave.nvim", config = get_core("autosave") }
   use { "numToStr/Comment.nvim", config = get_core("comment") } -- comment Utility
   use { "rmagatti/goto-preview", config = get_core("goto") } -- goto difinition
   use { "tami5/lspsaga.nvim", config = get_core("lspsaga") } -- code action, hover, signature,
