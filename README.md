@@ -30,13 +30,23 @@
 ### Mac & Linux
 - open your terminal & copy/paste...
 ```
-$ mv ~/.config/nvim ~/.config/nvim_bak # Backup your things
+# Backup your things...
+$ mv ~/.config/nvim ~/.config/nvim_bak 
+
+# Have fun!
 $ git clone https://github.com/Gl00ria/nvim.git ~/.config/nvim
 ```
-### Windows 'PowerShell'(feedback required from windows users)
+### Windows
 - open PowerShell & copy/paste...
 ```
-$ mv C:\Users\USER_NAME\AppData\Local\nvim\ C:\Users\USER_NAME\AppData\Local\nvim_bak #Backup your things
+# Backup your things...
+$ mv C:\Users\USER_NAME\AppData\Local\nvim\ C:\Users\USER_NAME\AppData\Local\nvim_bak 
+
+# Remove old cache and config
+$ rmdir -Recurse -Force $env:LOCALAPPDATA\nvim 
+$ rmdir -Recurse -Force $env:LOCALAPPDATA\nvim-data
+
+# Have fun!
 $ git clone https://github.com/Gl00ria/nvim.git "$env:LOCALAPPDATA\nvim"
 ```
 #### Notes:
