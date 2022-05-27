@@ -1,6 +1,6 @@
 -- use a protected call so we don't error out on first use
-local config_status_ok, lspsaga = pcall(require, "lspsaga")
-if not config_status_ok then
+local status_ok, lspsaga = pcall(require, "lspsaga")
+if not status_ok then
   return
 end
 
