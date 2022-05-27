@@ -66,8 +66,8 @@ command_center.add({
   { description = "Show opened files", cmd = "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
   keybindings = { "n", "<leader>eb", opts } },
   { description = "Show recent opened files", cmd = "<cmd>Telescope oldfiles<cr>", keybindings = { "n", "<leader>ao", opts } },
-  { description = "Goto to the next buffer", cmd = "<cmd>bnext<cr>", keybindings = { "n", "<S-l>", opts } },
-  { description = "Goto to the previous buffer", cmd = "<cmd>bprevious<cr>", keybindings = { "n", "<S-h>", opts } },
+  { description = "Goto to the next buffer", cmd = "<cmd>CybuNext<cr>", keybindings = { "n", "<S-l>", opts } },
+  { description = "Goto to the previous buffer", cmd = "<cmd>CybuPrev<cr>", keybindings = { "n", "<S-h>", opts } },
   { description = "Delete current buffer without a punch", cmd = "<cmd>Bdelete!<cr>", keybindings = { "n", "Q", opts } },
   { description = "Exit highlighted mode", cmd = "<cmd>nohlsearch<cr>", keybindings = { "n", "<esc><esc>", opts } },
 
@@ -87,6 +87,8 @@ command_center.add({
   { description = "Search current highlighted word", cmd = "<cmd>lua require('spectre').open_visual()<cr>", keybindings = { "v", "vs", opts } },
   { description = "Open Spectre", cmd = "<cmd>lua require('spectre').open()<cr>", keybindings = { "n", "so", opts } },
   { description = "Decrement Number", cmd = "<cmd>DialDecrement<cr>", keybindings = { "n", "<C-D>", opts } },
+  { description = "Swap elements Mode", cmd = "<cmd>ISwap<cr>", keybindings = { "n", "<leader>s", opts } },
+  { description = "Swap elemets with", cmd = "<cmd>ISwapWith<cr>", keybindings = { "n", "<leader>sw", opts } },
   {
     description = "Move highlighted text Up",
     cmd = ":move '<-2<cr>gv-gv",
