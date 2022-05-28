@@ -90,8 +90,8 @@ return packer.startup(function(use)
 
   -- Ftplugin
   use { "mfussenegger/nvim-jdtls", ft = "java" } -- Java
-  use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, } -- Markdown
   use { "p00f/clangd_extensions.nvim", config = get_core("clangd_extensions"), ft = { "c", "cpp", "objc", "objcpp" } }
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim", config = get_core("telescope") }
