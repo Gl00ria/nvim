@@ -76,6 +76,7 @@ return packer.startup(function(use)
   use { "kyazdani42/nvim-web-devicons" } -- keep it always on top of plugins
   use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = get_core("neotree") }
   use { "lewis6991/impatient.nvim", config = get_core("impatient") } -- improve Startup time
+  use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" } -- code action menu
   use { "windwp/nvim-autopairs", config = get_core("autopairs") } -- autopairs
   use { "Pocco81/AutoSave.nvim", config = get_core("autosave") }
   use { "numToStr/Comment.nvim", config = get_core("comment") } -- comment Utility
@@ -238,6 +239,8 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim" }
   use { "Shatur/neovim-ayu" }
   use { "rose-pine/neovim" }
+
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim

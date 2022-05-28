@@ -105,7 +105,7 @@ keymap('n', 'nd', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts) -- goto next 
 keymap('n', 'pd', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts) -- gotto prev diagnostic
 keymap('n', 'ld', '<cmd>lua vim.diagnostic.setloclist()<cr>', opts) -- list diagnostics
 keymap('n', '<C-K>', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-keymap('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+keymap('n', 'ca', '<cmd>CodeActionMenu()<cr>', opts)
 keymap('n', 'si', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
 keymap('n', 'sh', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 keymap('n', 'af', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', opts)

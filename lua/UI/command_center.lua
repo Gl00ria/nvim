@@ -181,7 +181,7 @@ command_center.add({
   { description = "LSP info", cmd = "<cmd>LspInfo<cr>", },
   { description = "LSP instller info", cmd = "<cmd>LspInstallInfo<cr>", },
   { description = "Toggle_virtual_text", cmd = "<cmd>Lspsaga toggle_virtual_text<cr>", keybindings = { "n", "vt", opts } },
-  { description = "Code Action", cmd = "<cmd>lua vim.lsp.buf.code_action()<cr>", keybindings = { "n", "ca", opts} },
+  { description = "Code Action", cmd = "<cmd>CodeActionMenu<cr>", keybindings = { "n", "ca", opts} },
   { description = "Format", cmd = "<cmd>lua vim.lsp.buf.formatting()<cr>" },
   { description = "Toggle Format", cmd = "<cmd>LspToggleAutoFormat<cr>" },
   { description = "Hover", cmd = "<cmd>lua vim.lsp.buf.hover()<cr>", keybindings = { "n", "<C-k>", opts } },
