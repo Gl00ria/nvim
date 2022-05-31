@@ -73,6 +73,7 @@ command_center.add({
   { description = "Show recent opened files", cmd = "<cmd>Telescope oldfiles<cr>", keybindings = { "n", "<leader>ao", opts } },
   { description = "Goto to the next buffer", cmd = "<cmd>CybuNext<cr>", keybindings = { "n", "<S-l>", opts } },
   { description = "Goto to the previous buffer", cmd = "<cmd>CybuPrev<cr>", keybindings = { "n", "<S-h>", opts } },
+  { description = "Pick a Buffer", cmd = "<cmd>BufferLinePick<cr>", keybindings = { "n", "bp", opts} },
   { description = "Delete current buffer without a punch", cmd = "<cmd>Bdelete!<cr>", keybindings = { "n", "Q", opts } },
   { description = "Exit highlighted mode", cmd = "<cmd>nohlsearch<cr>", keybindings = { "n", "<esc><esc>", opts } },
 
