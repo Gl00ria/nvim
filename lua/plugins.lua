@@ -183,7 +183,6 @@ return packer.startup(function(use)
 
   -- UI
   -- use { "matbme/JABS.nvim", config = get_UI("jabs") } -- show opened buffers
-  use { "sunjon/shade.nvim", config = get_UI("shade") } -- dim inactive window
   use { "rcarriga/nvim-notify", config = get_UI("notify") } -- fancy notification window
   use { "folke/zen-mode.nvim", config = get_UI("zen-mode") } -- distraction free coding
   -- use { "folke/which-key.nvim", config = get_UI("whichkey") } -- display possible key-maps
