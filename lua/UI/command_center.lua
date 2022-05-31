@@ -53,6 +53,7 @@ command_center.add({
   { description = "Resize Down", cmd = "<cmd>resize +2<cr>", keybindings = { "n", "<C-Down>", opts } },
   { description = "Resize Right", cmd = "<cmd>vertical resize -2<cr>", keybindings = { "n", "<C-Right>", opts } },
   { description = "Resize Left", cmd = "<cmd>vertical resize +2<cr>", keybindings = { "n", "<C-Left>", opts } },
+  { description = "Dim inactive Windows (on/off)", cmd = "", keybindings = { "n", "<leader>2", opts } },
 
 
   {
