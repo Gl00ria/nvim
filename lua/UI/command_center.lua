@@ -39,6 +39,7 @@ command_center.add({
   { description = "Registers", cmd = "<cmd>Telescope registers<cr>", keybindings = { "n", "<leader>ar", opts } },
   { description = "Man pages", cmd = "<cmd>Telescope man_pages<cr>,", keybindings = { "n", "<leader>am", opts } },
   { description = "Help", cmd = "<cmd>Telescope help_tags<cr>", keybindings = { "n", "<leader>ah", opts } },
+  { description = "Table Mode", cmd = "<cmd>TableModeToggle<cr>", keybindings = { "n", "<leader>ta", opts}},
 
 
   {
