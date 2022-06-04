@@ -39,24 +39,24 @@ vim.g.dashboard_custom_footer = {
 
 vim.g.dashboard_custom_section = {
   a = {
-    description = { "ﮛ  𝓕𝓲𝓷𝓭 𝓕𝓸𝓵𝓭𝓮𝓻        " },
-    command = "RnvimrToggle",
-  },
-  b = {
     description = { "  𝓕𝓲𝓷𝓭 𝓕𝓲𝓵𝓮          " },
     command = "Telescope find_files",
   },
-  c = {
-    description = { "  𝓕𝓲𝓷𝓭 𝓦𝓸𝓻𝓭          " },
-    command = "Telescope live_grep",
+  b = {
+    description = { "  𝓡𝓮𝓬𝓮𝓷𝓽𝓵𝔂 𝓾𝓼𝓮𝓭 𝓕𝓲𝓵𝓮𝓼 " },
+    command = "Telescope oldfiles",
   },
-  d = {
+  c = {
     description = { "  𝓝𝓮𝔀 𝓕𝓲𝓵𝓮           " },
     command = ":ene!",
   },
+  d = {
+    description = { "ﮛ  𝓕𝓲𝓷𝓭 𝓕𝓸𝓵𝓭𝓮𝓻        " },
+    command = "RnvimrToggle",
+  },
   e = {
-    description = { "  𝓡𝓮𝓬𝓮𝓷𝓽𝓵𝔂 𝓾𝓼𝓮𝓭 𝓕𝓲𝓵𝓮𝓼 " },
-    command = "Telescope oldfiles",
+    description = { "  𝓕𝓲𝓷𝓭 𝓦𝓸𝓻𝓭          " },
+    command = "Telescope live_grep",
   },
   f = {
     description = { "  𝓡𝓮𝓬𝓮𝓷𝓽 𝓟𝓻𝓸𝓳𝓮𝓬𝓽𝓼    " },
