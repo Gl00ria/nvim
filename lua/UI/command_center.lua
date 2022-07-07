@@ -1,6 +1,6 @@
 -- use a protected call so we don't error out on first use
-local status_ok, command_center = pcall(require, "command_center")
-if not status_ok then
+local status_ok1, command_center = pcall(require, "command_center")
+if not status_ok1 then
   return
 end
 local opts = { noremap = true, silent = true }
@@ -35,12 +35,22 @@ command_center.add({
   { description = "Zen Mode", cmd = "<cmd>ZenMode<cr>", keybindings = { "n", "<leader>z", opts } },
   { description = "Rename", cmd = "<cmd>Lspsaga rename<cr>", keybindings = { "n", "<F2>", opts } },
   { description = "UndoTree", cmd = "<cmd>UndotreeToggle<cr>", keybindings = { "n", "<F3>", opts } },
-  { description = "Vista", cmd = "<cmd>Vista nvim_lsp<cr>", keybindings = { "n", "<F4>", opts } },
+  { description = "Code outline window", cmd = "<cmd>SymbolsOutline<cr>", keybindings = { "n", "<F4>", opts } },
   { description = "Registers", cmd = "<cmd>Telescope registers<cr>", keybindings = { "n", "<leader>ar", opts } },
   { description = "Man pages", cmd = "<cmd>Telescope man_pages<cr>,", keybindings = { "n", "<leader>am", opts } },
   { description = "Help", cmd = "<cmd>Telescope help_tags<cr>", keybindings = { "n", "<leader>ah", opts } },
   { description = "Table Mode", cmd = "<cmd>TableModeToggle<cr>", keybindings = { "n", "<leader>ta", opts}},
 
+  {
+    description = "__________________Browse__________________",
+    cmd = "",
+  },
+  { description = "Google Search", cmd = "<cmd>GoogleSearch<cr>" },
+  { description = "Brwoser's Bookmarks", cmd = "<cmd>BrowserBookmarks<cr>" },
+  { description = "Devdocs Search", cmd = "<cmd>BrowseDevdocsSearch<cr>" },
+  { description = "Devdocs Filetype Search", cmd = "<cmd>BrowseDevdocsFiletypeSearch<cr>" },
+  { description = "MDN Search", cmd = "<cmd>BrowseMdnSearch<cr>" },
+  { description = "Browselist", cmd = "<cmd>Browselist<cr>" },
 
   {
     description = "_____________Windows Operations_____________",
@@ -274,8 +284,8 @@ command_center.add({
 })
 
 -- use a protected call so we don't error out on first use
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
+local status_ok2, telescope = pcall(require, "telescope")
+if not status_ok2 then
   return
 end
 telescope.setup {
