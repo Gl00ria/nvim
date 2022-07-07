@@ -85,7 +85,7 @@ return packer.startup(function(use)
   use { "mbbill/undotree", config = get_core("undotree") } -- display UNDO History
   use { "sar/spectre.nvim", config = get_core("spectre") } -- search/replace panel
   use { "SmiteshP/nvim-gps", config = get_core("gps") } -- show context of the current cursor position on the statusline
-  use { "liuchengxu/vista.vim" } -- view symbols useing lsp
+  -- use { "liuchengxu/vista.vim" } -- view symbols useing lsp
   use { "moll/vim-bbye" } -- close a file 'without a punch on my face' :)
   use { "junegunn/fzf" } -- fuzzy finder
 
@@ -127,26 +127,7 @@ return packer.startup(function(use)
   use { "hrsh7th/cmp-path" } -- path completions
   use { "kdheepak/cmp-latex-symbols" }
   use { "hrsh7th/cmp-emoji" }
-  use { "tzachar/cmp-tabnine",
-    config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = "..",
-        ignored_file_types = { -- default is not to ignore
-          -- uncomment to ignore in lua:
-          -- lua = true
-        },
-      }
-    end,
-
-    -- NOTE: if you are on 'Windows', replace "./install.sh" with "powershell ./install.ps1"
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  }
+ 	use { 'tzachar/cmp-tabnine', run='./install.sh', config = get_core("tabnine") }
 
   -- Snippets
   use { "L3MON4D3/LuaSnip" } -- snippet engine
@@ -183,11 +164,11 @@ return packer.startup(function(use)
 
   -- UI
   -- use { "matbme/JABS.nvim", config = get_UI("jabs") } -- show opened buffers
+  use { "goolord/alpha-nvim", config = get_UI("alpha") }
   use { "rcarriga/nvim-notify", config = get_UI("notify") } -- fancy notification window
   use { "folke/zen-mode.nvim", config = get_UI("zen-mode") } -- distraction free coding
   -- use { "folke/which-key.nvim", config = get_UI("whichkey") } -- display possible key-maps
   use { "karb94/neoscroll.nvim", config = get_UI("neoscroll") } -- smooth scrolling
-  use { "glepnir/dashboard-nvim", config = get_UI("dashboard") } -- greathing window
   use { "RRethy/vim-illuminate", config = get_UI("illuminate") } -- highlighting other uses of the current word under the cursor
   use { "nvim-lualine/lualine.nvim", config = get_UI("lualine") } -- statusline
   use { "akinsho/bufferline.nvim", config = get_UI("bufferline") } -- bufferline
@@ -201,6 +182,7 @@ return packer.startup(function(use)
   -- Extra
   use { "mhinz/vim-rfc" } -- usage = :RFC NUMBER or :RFC NAME
   use { "tpope/vim-repeat" } -- repeat the last plugin map '.'
+  use { "abecodes/tabout.nvim", wants = { "nvim-treesitter" }, config = get_extra("tabout") } -- or require if not used so far
   -- use { "jbyuki/instant.nvim" }
   use { "kevinhwang91/rnvimr" } -- ranger
   use { "b0o/SchemaStore.nvim" } -- Get extra JSON schemas
@@ -209,9 +191,10 @@ return packer.startup(function(use)
   use { "phaazon/hop.nvim", config = get_extra("hop") } -- jumb to any word-char in the document
   use { "monaqa/dial.nvim", config = get_extra("dial") } -- increment/decrement
   use { "mizlan/iswap.nvim", config = get_extra("iswap") }
+  use { "lalitmee/browse.nvim", config = get_core("browse") } -- Global CheatSheet
   -- use { "nacro90/numb.nvim", config = get_extra("numb") } -- peek a line without jumping to that line
   use { "unblevable/quick-scope", config = get_extra("quickscope") } -- highlight when using 'F, T etc...'
-  use { "RishabhRD/nvim-cheat.sh", requires = { "RishabhRD/popfix"} } -- cheat sheet
+  use { "RishabhRD/nvim-cheat.sh", requires = { "RishabhRD/popfix"} } -- Local CheatSheet
   use { "tversteeg/registers.nvim", config = get_extra("registers") } -- show registers content
   use { "akinsho/toggleterm.nvim", config = get_extra("toggleterm") } -- terminal window
   use { "br1anchen/nvim-colorizer.lua", config = get_extra("colorizer") } -- color highlighter
@@ -238,8 +221,6 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim" }
   use { "Shatur/neovim-ayu" }
   use { "rose-pine/neovim" }
-
-
 
 
   -- Automatically set up your configuration after cloning packer.nvim
