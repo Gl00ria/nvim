@@ -1,4 +1,7 @@
 ## This is my PDE using [Neovim](https://github.com/neovim/neovim)
+![1](https://github.com/Gl00ria/nvim/assets/74514103/d6441027-6f65-4b1b-9f54-28717cadedee)
+![2](https://github.com/Gl00ria/nvim/assets/74514103/265c8067-e8f4-498b-87b5-5657cc316483)
+![3](https://github.com/Gl00ria/nvim/assets/74514103/44776202-3700-4fb7-9844-270e9ada6b2a)
 
 #### The idea here is:
 
