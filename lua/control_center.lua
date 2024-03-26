@@ -1212,7 +1212,7 @@ conf.ui_plugins = {
   -- Fancy notifications
   -- ~/.config/nvim/Gl0riVim/plugins/ui/notify.lua
   notify = {
-    enable = true,
+    enable = false,
     event = "VeryLazy",
     stages = "fade", -- Available: fade | fade_in_slide_out | slide | static
     keys = {
@@ -1285,6 +1285,15 @@ conf.ui_plugins = {
 --
 --   ╘═════════════════════════════════════════════════════════╛
 conf.utils_plugins = {
+  -- create tables
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/table_mode.lua
+  table_mode = {
+    enable = true,
+    cmd = "TableModeToggle",
+    keys = {
+      { "<leader>Et", "<cmd>TableModeToggle<cr>", desc = "Toggle Table Mode 󰓫 " },
+    },
+  },
   -- undo tree "my fav"
   -- ~/.config/nvim/Gl0riVim/plugins/utils/undotree.lua
   undo_tree = {
