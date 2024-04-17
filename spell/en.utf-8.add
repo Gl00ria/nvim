@@ -9,3 +9,5 @@ Neovim
 Neovide
 config
 ansible
+rsync
+zsh

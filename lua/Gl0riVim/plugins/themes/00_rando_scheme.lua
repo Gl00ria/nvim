@@ -19,7 +19,6 @@ if rando_opts.enable then
       startup_schemes = { -- used for startup schemes & in case the user selected 'random_all' from the menu
         -- fav
         "nord",
-        "poimandres",
         "moonlight",
         "nightfox",
         "terafox",
@@ -56,8 +55,9 @@ if rando_opts.enable then
         "everblush",
         "palenightfall",
         "nordfox",
-        "onedark_dark",
         "oxocarbon",
+        -- "onedark_dark",
+        -- "poimandres",
         -- "melange",
         -- "citruszest",
         -- "mellow",
@@ -73,7 +73,6 @@ if rando_opts.enable then
       },
       night_schemes = {
         -- fav
-        "poimandres",
         "nord",
         "nightfox",
         "terafox",
@@ -109,8 +108,9 @@ if rando_opts.enable then
         "palenightfall",
         "nordfox",
         "carbonfox",
-        "onedark_dark",
         "oxocarbon",
+        -- "onedark_dark",
+        -- "poimandres",
         -- "melange",
         -- "adwaita",
         -- "citruszest",
@@ -119,7 +119,6 @@ if rando_opts.enable then
       day_schemes = {
         -- fav
         "nord",
-        "poimandres",
         "onedark",
         "gruvbox-material",
         "substrata",
@@ -142,6 +141,7 @@ if rando_opts.enable then
         "dawnfox",
         "dayfox",
         "onelight",
+        -- "poimandres",
         -- "melange",
         -- "monokai-nightasty",
         -- "monokai-pro",
