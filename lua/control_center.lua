@@ -1212,7 +1212,7 @@ conf.ui_plugins = {
   -- Fancy notifications
   -- ~/.config/nvim/Gl0riVim/plugins/ui/notify.lua
   notify = {
-    enable = false,
+    enable = true,
     event = "VeryLazy",
     stages = "fade", -- Available: fade | fade_in_slide_out | slide | static
     keys = {
@@ -1228,7 +1228,7 @@ conf.ui_plugins = {
   -- noicer nvim UI
   --  ~/.config/nvim/Gl0riVim/plugins/ui/noice.lua
   noice = {
-    enable = true,
+    enable = false,
     event = "VeryLazy",
     keys = {
       {
@@ -1285,6 +1285,32 @@ conf.ui_plugins = {
 --
 --   ╘═════════════════════════════════════════════════════════╛
 conf.utils_plugins = {
+  yanky = { -- yank history
+    enable = true,
+    keys = {
+      {
+        "<leader>y",
+        function()
+          require("telescope").extensions.yank_history.yank_history({})
+        end,
+        desc = "Open Yank History 󰋚 ",
+      },
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" } },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" } },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" } },
+    },
+    history_length = 100,
+    storage = "sqlite", -- Available: "sqlite", "shada"
+    storage_path = vim.fn.stdpath("data") .. "~/.custom_db/yanky.db", -- Only for sqlite storage
+    sync_with_ring = true, -- sys clipboard
+    highlight = {
+      on_put = false,
+      on_yank = false,
+      timer = 0, -- default '500'
+    },
+    preserve_cursor_position = true,
+    textobj = true,
+  },
   -- create tables
   -- ~/.config/nvim/Gl0riVim/plugins/utils/table_mode.lua
   table_mode = {
@@ -1377,7 +1403,7 @@ conf.utils_plugins = {
   -- Terminal
   -- ~/.config/nvim/Gl0riVim/plugins/utils/toggleterm.lua
   toggleterm = {
-    enable = true,
+    enable = false,
     cmd = "ToggleTerm",
     open_mapping = [[<c-\>]],
     keys = {
@@ -1456,6 +1482,19 @@ conf.utils_plugins = {
       work_time = 25,
       break_time = 5,
     },
+  },
+  code_snap = {
+    -- ~/.config/nvim/Gl0riVim/plugins/utils/code_snap.lua
+    enable = true,
+    cmd = { "CodeSnap", "CodeSnapSave" },
+    code_font_family = "CaskaydiaCove Nerd Font",
+    save_path = "~/Pictures/Screenshots/",
+    parsed = "~/Pictures/y-m-d_at_h:m:s.png",
+    bg_theme = "default", -- Available: "default" | "bamboo" | "sea" | "beach" | "grape" | "dusk" | "summer"
+    has_breadcrumbs = true,
+    breadcrumbs_separator = "/",
+    watermark_font_family = "Pacifico",
+    watermark = "Gl00ria",
   },
 }
 --   ╒═════════════════════════════════════════════════════════╕
@@ -1714,7 +1753,7 @@ conf.theme_plugins = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/poimandres.lua
   poimandres = {
-    enable = true,
+    enable = false,
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/substrata.lua
   substrata = {
