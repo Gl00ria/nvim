@@ -14,9 +14,9 @@ if settings.langs_control.hypr.enable then
       "luckasRanarison/tree-sitter-hypr",
       build = ":TSUpdate hypr",
       config = function()
-        -- fix ft detection for hyprland
+        -- ft detection for hyprland
         vim.filetype.add({
-          pattern = { [".*/hyprland%.conf"] = "hyprlang" },
+          pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
         })
         require("nvim-treesitter.parsers").get_parser_configs().hyprlang = {
           install_info = {
