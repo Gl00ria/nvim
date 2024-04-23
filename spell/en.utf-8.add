@@ -11,3 +11,7 @@ config
 ansible
 rsync
 zsh
+PowerShell
+FZF
+Installaion
+winget
