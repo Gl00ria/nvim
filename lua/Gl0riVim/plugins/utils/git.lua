@@ -4,13 +4,15 @@ if not settings_status then
   return
 end
 
-local git_opts = settings.utils_plugins.git
-
+local git_signs_opts = settings.utils_plugins.git_signs
 local gitsigns = {}
 
-if git_opts.enable then
+local git_blame_opts = settings.utils_plugins.git_blame
+local gitblame = {}
+
+if git_signs_opts.enable then
   gitsigns = {
-    event = git_opts.event,
+    event = git_signs_opts.event,
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
@@ -66,9 +68,9 @@ if git_opts.enable then
         -- ╰──────────────────────────────────────────────────────────╯
         local gs = package.loaded.gitsigns
         -- Navigation
-        map("n", git_opts.keymaps.next_hunk, function()
+        map("n", git_signs_opts.keymaps.next_hunk, function()
           if vim.wo.diff then
-            return git_opts.keymaps.next_hunk
+            return git_signs_opts.keymaps.next_hunk
           end
           vim.schedule(function()
             gs.next_hunk()
@@ -76,9 +78,9 @@ if git_opts.enable then
           return "<Ignore>"
         end, { desc = "Next Hunk 󰮰 " })
 
-        map("n", git_opts.keymaps.prev_hunk, function()
+        map("n", git_signs_opts.keymaps.prev_hunk, function()
           if vim.wo.diff then
-            return git_opts.keymaps.prev_hunk
+            return git_signs_opts.keymaps.prev_hunk
           end
           vim.schedule(function()
             gs.prev_hunk()
@@ -87,31 +89,69 @@ if git_opts.enable then
         end, { desc = "Prev Hunk 󰮲 " })
 
         -- Actions
-        map({ "n", "v" }, git_opts.keymaps.reset_hunk, gs.reset_hunk, { desc = "Reset Hunk 󱄍 " })
+        map({ "n", "v" }, git_signs_opts.keymaps.reset_hunk, gs.reset_hunk, { desc = "Reset Hunk 󱄍 " })
 
-        map({ "n", "v" }, git_opts.keymaps.stage_hunk, gs.stage_hunk, { desc = "Stage Hunk 󰼬 " })
-        map("n", git_opts.keymaps.stage_buffer, gs.stage_buffer, { desc = "Stage Buffer 󰼬 " })
+        map({ "n", "v" }, git_signs_opts.keymaps.stage_hunk, gs.stage_hunk, { desc = "Stage Hunk 󰼬 " })
+        map("n", git_signs_opts.keymaps.stage_buffer, gs.stage_buffer, { desc = "Stage Buffer 󰼬 " })
 
-        map("n", git_opts.keymaps.undo_stage_hunk, gs.undo_stage_hunk, { desc = "Undo Stage 󰕌 " })
-        map("n", git_opts.keymaps.reset_buffer, gs.reset_buffer, { desc = "Reset Buffer 󱄍 " })
-        map("n", git_opts.keymaps.preview_hunk, gs.preview_hunk, { desc = "Preview Hunk  " })
+        map("n", git_signs_opts.keymaps.undo_stage_hunk, gs.undo_stage_hunk, { desc = "Undo Stage 󰕌 " })
+        map("n", git_signs_opts.keymaps.reset_buffer, gs.reset_buffer, { desc = "Reset Buffer 󱄍 " })
+        map("n", git_signs_opts.keymaps.preview_hunk, gs.preview_hunk, { desc = "Preview Hunk  " })
 
-        map("n", git_opts.keymaps.blame_line, function()
+        map("n", git_signs_opts.keymaps.blame_line, function()
           gs.blame_line({ full = true })
         end, { desc = "Blame  " })
 
-        map("n", git_opts.keymaps.diff_this, gs.diffthis, { desc = "Diff Hunk  " })
-        map("n", git_opts.keymaps.toggle_deleted, gs.toggle_deleted, { desc = "Toggle Deleted  " })
+        map("n", git_signs_opts.keymaps.diff_this, gs.diffthis, { desc = "Diff Hunk  " })
+        map("n", git_signs_opts.keymaps.toggle_deleted, gs.toggle_deleted, { desc = "Toggle Deleted  " })
 
         -- Text object
-        map({ "o", "x" }, git_opts.keymaps.text_object, ":<C-U>Gitsigns select_hunk<CR>")
+        map({ "o", "x" }, git_signs_opts.keymaps.text_object, ":<C-U>Gitsigns select_hunk<CR>")
       end,
     },
   }
 end
 
+if git_blame_opts.enable then
+  gitblame = {
+    "FabijanZulj/blame.nvim",
+    cmd = git_blame_opts.cmd,
+    event = git_blame_opts.event,
+    init = function()
+      if git_blame_opts.on_startup then
+        vim.api.nvim_create_autocmd({ "VimEnter" }, {
+          callback = function()
+            vim.cmd("BlameToggle virtual")
+          end,
+        })
+      end
+    end,
+    opts = {
+      date_format = git_blame_opts.date_format,
+      virtual_style = git_blame_opts.virtual_style,
+      views = {
+        -- window = window_view,
+        -- virtual = virtual_view,
+        -- default = window_view,
+      },
+      merge_consecutive = false,
+      max_summary_width = 30,
+      colors = nil,
+      commit_detail_view = git_blame_opts.commit_detail_view,
+      -- format_fn = formats.commit_date_author_fn,
+      mappings = {
+        commit_info = git_blame_opts.mappings.commit_info,
+        stack_push = git_blame_opts.mappings.stack_push,
+        stack_pop = git_blame_opts.mappings.stack_pop,
+        show_commit = git_blame_opts.mappings.show_commit,
+        close = git_blame_opts.mappings.close,
+      },
+    },
+  }
+end
+
 local git_treesitter = {}
-if git_opts.ts_git then
+if git_signs_opts.ts_git then
   git_treesitter = {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -122,4 +162,4 @@ if git_opts.ts_git then
   }
 end
 
-return { gitsigns, git_treesitter }
+return { gitblame, gitsigns, git_treesitter }

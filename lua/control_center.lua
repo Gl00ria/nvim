@@ -1439,9 +1439,26 @@ conf.utils_plugins = {
       },
     },
   },
-  -- Note: slows down the startuptime
-  git = {
+  git_blame = {
     enable = true,
+    cmd = { "BlameToggle" },
+    on_startup = false,
+    event = nil,
+    -- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    date_format = "%d-%m-%Y",
+    virtual_style = "right",
+    commit_detail_view = "vsplit",
+    mappings = {
+      commit_info = "i",
+      stack_push = "<TAB>",
+      stack_pop = "<BS>",
+      show_commit = "<CR>",
+      close = { "<esc>", "q" },
+    },
+  },
+  -- Note: slows down the startuptime
+  git_signs = {
+    enable = false,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     ts_git = true, -- Treesitter: "diff", "gitcommit"
     keymaps = {
