@@ -1442,9 +1442,20 @@ conf.utils_plugins = {
   git_blame = {
     enable = true,
     cmd = { "BlameToggle" },
-    on_startup = false,
     event = nil,
     -- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    keys = {
+      {
+        "<leader>gv",
+        "<cmd>BlameToggle virtual<cr>",
+        desc = "Toggle Blame 'Virtual' ",
+      },
+      {
+        "<leader>gw",
+        "<cmd>BlameToggle window<cr>",
+        desc = "Toggle Blame 'Window' ",
+      },
+    },
     date_format = "%d-%m-%Y",
     virtual_style = "right",
     commit_detail_view = "vsplit",
@@ -1458,7 +1469,7 @@ conf.utils_plugins = {
   },
   -- Note: slows down the startuptime
   git_signs = {
-    enable = false,
+    enable = true,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     ts_git = true, -- Treesitter: "diff", "gitcommit"
     keymaps = {

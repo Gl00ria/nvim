@@ -340,6 +340,8 @@ local whichkey_registered = {
   ["<leader>g"] = {
     name = "+Git ",
     b = "Blame  ",
+    v = { "<cmd>BlameToggle virtual<cr>", "Toggle Blame 'Virtual' " },
+    w = { "<cmd>BlameToggle window<cr>", "Toggle Blame 'Window' " },
     -- s = "Status 󱖫 ",
   },
   ["<leader>gh"] = {

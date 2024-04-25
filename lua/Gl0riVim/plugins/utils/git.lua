@@ -117,15 +117,7 @@ if git_blame_opts.enable then
     "FabijanZulj/blame.nvim",
     cmd = git_blame_opts.cmd,
     event = git_blame_opts.event,
-    init = function()
-      if git_blame_opts.on_startup then
-        vim.api.nvim_create_autocmd({ "VimEnter" }, {
-          callback = function()
-            vim.cmd("BlameToggle virtual")
-          end,
-        })
-      end
-    end,
+    keys = git_blame_opts.keys,
     opts = {
       date_format = git_blame_opts.date_format,
       virtual_style = git_blame_opts.virtual_style,
