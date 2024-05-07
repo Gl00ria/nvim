@@ -18,7 +18,7 @@ return {
     "onsails/lspkind.nvim",
     -- "uga-rosa/cmp-dictionary", -- Great one, but slows down CMP & the editor itself
     "hrsh7th/cmp-calc",
-    { "Gelio/cmp-natdat", opts = { cmp_kind_text = "" } },
+    -- { "Gelio/cmp-natdat", opts = { cmp_kind_text = "" } }, PERF: use 'Luasnip' --> dateDMY, dateMDY
   },
   config = function()
     local cmp_status, cmp = pcall(require, "cmp")
