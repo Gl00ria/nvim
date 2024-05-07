@@ -454,12 +454,25 @@ conf.coding_plugins = {
       },
     },
   },
+  -- winbar
+  -- ~/.config/nvim/Gl0riVim/plugins/coding/barbecue.lua
+  barbecue = {
+    enable = true,
+    event = "LspAttach",
+  },
+  -- symbol usage
+  -- ~/.config/nvim/Gl0riVim/plugins/coding/symbol_usage.lua
+  symbol_usage = {
+    enable = true,
+    event = "LspAttach",
+  },
   -- noicer LSP UI
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lspsaga.lua
+  -- Disabled: 2024-05-07
   -- Note: this plugin is amazing, BUT TOO HEAVY
   lspsaga = {
-    enable = true,
-    event = "LspAttach", -- "LspAttach"
+    enable = false,
+    event = "LspAttach",
     cmd = "Lspsaga",
     keys = {
       { "<leader>cS", "<cmd>Lspsaga outline<cr>", desc = "Symbol Outline  " },
@@ -1213,7 +1226,7 @@ conf.ui_plugins = {
   -- Fancy notifications
   -- ~/.config/nvim/Gl0riVim/plugins/ui/notify.lua
   notify = {
-    enable = true,
+    enable = false,
     event = "VeryLazy",
     stages = "fade", -- Available: fade | fade_in_slide_out | slide | static
     keys = {
