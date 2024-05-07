@@ -65,7 +65,7 @@ if html_css_opts.enable_css then
   css = {
     lspconfig.cssls.setup({
       capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
-      handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
+      -- handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
       on_attach = require("Gl0riVim.plugins.00_config.lsp.servers.cssls").on_attach,
       settings = require("Gl0riVim.plugins.00_config.lsp.servers.cssls").settings,
     }),
