@@ -4,11 +4,11 @@ if not settings_status then
   return
 end
 
-local indentblankline_opts = settings.ui_plugins.indent_guide.indent_blank_line
-local mini_indentscope_opts = settings.ui_plugins.indent_guide.mini_inden_scope
-
-local mini_indentscope = {}
 local indentblankline = {}
+local indentblankline_opts = settings.ui_plugins.indent_guide.indent_blank_line
+
+local mini_indent_opts = settings.ui_plugins.indent_guide.mini_inden_scope
+local mini_indentscope = {}
 
 if indentblankline_opts.indent_style == "none" then
   indentblankline = {}
@@ -21,7 +21,7 @@ if indentblankline_opts.enable then
     version = "2.20.8",
     config = function()
       local indent_style = indentblankline_opts.indent_style
-      local char = indentblankline_opts.indent_char
+      local char = settings.indentline_char
       local char_highlight_list = {}
       local space_char_highlight_list = {}
       local show_current_context = false
@@ -117,10 +117,10 @@ if indentblankline_opts.enable then
   }
 end
 
-if mini_indentscope_opts.enable then
+if mini_indent_opts.enable then
   mini_indentscope = {
     "echasnovski/mini.indentscope",
-    event = mini_indentscope_opts.event,
+    event = mini_indent_opts.event,
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy", "mason" },
@@ -129,10 +129,17 @@ if mini_indentscope_opts.enable then
         end,
       })
     end,
-    opts = {
-      symbol = mini_indentscope_opts.indent_char,
-      options = { try_as_border = true },
-    },
+    config = function()
+      local indentscope_status, indent_scope = pcall(require, "mini.indentscope")
+      if not indentscope_status then
+        vim.notify("Plugin [mini.indentscope] failed to load", vim.log.levels.WARN)
+        return
+      end
+      indent_scope.setup({
+        symbol = settings.mini_indentscope_char,
+        options = { try_as_border = true },
+      })
+    end,
   }
 end
 
