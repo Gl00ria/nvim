@@ -1,6 +1,6 @@
 local settings_status, settings = pcall(require, "control_center")
 if not settings_status then
-  vim.notify("[settings] failed to load within (telescop_extensions.lua)", vim.log.levels.WARN)
+  vim.notify("[settings] failed to load within (noice.lua)", vim.log.levels.WARN)
   return
 end
 
