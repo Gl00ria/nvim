@@ -298,6 +298,12 @@ conf.coding_plugins = {
       "luap",
       "regex",
     },
+    -- enhanced %
+    -- ~/.config/nvim/Gl0riVim/plugins/coding/treesitter/tree_pairs.lua
+    -- HACK: Disabled: 08/05/2024
+    tree_pair = {
+      enable = false,
+    },
     extensions = {
       -- Commentstring options based on cursor location
       -- ~/.config/nvim/Gl0riVim/plugins/coding/treesitter/comment_string.lua
@@ -313,14 +319,14 @@ conf.coding_plugins = {
         event = "VeryLazy",
       },
       RRethy_text_objects = {
-        -- Disabled: 2024-02-03
+        -- HACK: Disabled: 2024-02-03
         enable = false,
         event = "VeryLazy",
       },
       -- Show code context, Note: It's the lil window under the winbar
       --  ~/.config/nvim/Gl0riVim/plugins/coding/treesitter/context.lua
       context = {
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
       },
@@ -416,13 +422,16 @@ conf.coding_plugins = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/inlayhints.lua
   --  ~/.config/nvim/Gl0riVim/plugins/00_config/lsp/inlayhints.lua
+  -- HACK:Disabled: 2024-02-03
+  -- wait for the builtin inlayhints
+  -- see autocmds.lua for the current autocommand
   inlayhints = {
-    -- Disabled: 2024-02-03
     enable = false,
     event = nil,
   },
   -- comment utility
   -- ~/.config/nvim/Gl0riVim/plugins/coding/comment.lua
+  -- HACK: wait for the bulitin comment (gcc)
   comment = {
     enable = true,
     event = nil,
@@ -468,8 +477,8 @@ conf.coding_plugins = {
   },
   -- noicer LSP UI
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lspsaga.lua
-  -- Disabled: 2024-05-07
-  -- Note: this plugin is amazing, BUT TOO HEAVY
+  -- HACK: Disabled: 2024-05-07
+  -- this plugin is amazing, BUT TOO HEAVY
   lspsaga = {
     enable = false,
     event = "LspAttach",
@@ -492,6 +501,7 @@ conf.coding_plugins = {
   },
   -- Split/Join Blocks of code ( arrays, hashes, statements...etc )
   --  ~/.config/nvim/Gl0riVim/plugins/coding/split_join.lua
+  -- HACK: Visit after a while to disable 2024-05-07
   split_join = {
     enable = true,
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
@@ -506,7 +516,7 @@ conf.coding_plugins = {
   -- window for previewing, navigating and editing LSP locations
   --  ~/.config/nvim/Gl0riVim/plugins/coding/glance.lua
   glance = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
     cmd = "Glance",
     keys = {
@@ -517,8 +527,9 @@ conf.coding_plugins = {
     },
   },
   -- highlight sections of code which might have security or quality issues
+  --  ~/.config/nvim/Gl0riVim/plugins/coding/secureitree.lua
   secureitree = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
   },
 }
@@ -626,7 +637,7 @@ conf.langs_control = {
   },
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/graphql.lua
   graphql = {
-    enable = true,
+    enable = false,
     conform_graphql = true, -- uses: "graphql"
     mason_sqlls = true, -- mason: "sqlls"
     ts_graphql = true, -- treesitter: "graphql"
@@ -686,7 +697,7 @@ conf.langs_control = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/prisma.lua
   prisma = {
-    enable = true,
+    enable = false,
     mason_prsima = true, -- mason: "prisma-languga-server"
     conform_prisma = true,
     ts_prisma = true, -- treesitter: "prisma"
@@ -698,7 +709,7 @@ conf.langs_control = {
     env_select = true, -- installs (https://github.com/linux-cultist/venv-selector.nvim)
     conform_python = true, -- uses: "black", "isort"
     dap_python = true, -- installs: (https://github.com/mfussenegger/nvim-dap-python)
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     semshi_python = false, -- semantic highlighting for python
     neotest_python = true,
     keys = {
@@ -725,7 +736,7 @@ conf.langs_control = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/ruby.lua
   ruby = {
-    enable = true,
+    enable = false,
     mason_ruby = true, -- mason: "solargraph"
     ts_ruby = true, -- treesitter: "ruby"
   },
@@ -784,7 +795,7 @@ conf.langs_control = {
   },
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/vuels.lua
   vue = {
-    enable = true,
+    enable = false,
     conform_vue = true, -- uses; "prettier"
     mason_vue = true, -- mason: "vue-language-server"
     ts_vue = true, -- treesitter: "vue"
@@ -826,7 +837,7 @@ conf.editor_plugins = {
   },
   -- ~/.config/nvim/Gl0riVim/plugins/editor/keymap_helper.lua
   hawtkeys = { -- finding & suggesting memorable and easy-to-press keys
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
     cmd = { "Hawtkeys", "HawtkeysAll", "HawtkeysDupes" },
   },
@@ -872,62 +883,63 @@ conf.editor_plugins = {
     --  ~/.config/nvim/Gl0riVim/plugins/editor/telescope_extentions.lua
     extensions = {
       zoxide = { -- smart directory picker
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>tvz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide" },
       },
       file_browser = { -- creation, deletion, renaming, and moving of files and folders
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>fb", "<cmd>Telescope file_browser<cr>", desc = "File Browser" },
       },
       fzf_native = { -- fzf current buffer
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "FZF (Current Buffer)" },
       },
       markdwon_heading = { -- Switch between document's headings (Markdown, AsciiDoc, rst, org, latex, and Vim Help)
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>tvh", "<cmd>Telescope heading<cr>", desc = "Search Headings" },
       },
       make = { -- run GNU Make targets
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>tm", "<cmd>Telescope make<cr>", desc = "Run make" },
       },
       freq_search = { -- (F)recency sorting for all Telescope pickers
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
       },
       http = { -- investigate HTTP status codes
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
       },
       license = { --  view & paste common softwre licenses
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
       },
       tabs = { -- view & close tabs
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>tvt", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "View Tabs" },
       },
       undo = { -- view UNDOs
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>tvu", "<cmd>Telescope undo<cr>", desc = "View UNDOs" },
       },
       docker = { --  manage docker(containers, images, networks, volumes, contexts,
-        -- Disabled: 2024-02-03
+        -- HACK:Disabled: 2024-02-03
         enable = false,
         keys = { "<leader>tvd", "<cmd>Telescope docker<cr>", desc = "View Dockers" },
       },
     },
   },
   -- ~/.config/nvim/Gl0riVim/plugins/editor/bufferline.lua
+  -- HACK:wait for the next update with nvim-nightly, checked on 2024-05-08
   bufferline = {
-    enable = true,
+    enable = false,
     event = "VeryLazy",
     keys = {
       { "<leader>bb", "<cmd>BufferLineMovePrev<CR>", desc = "Move Buffer Back   " },
@@ -1145,7 +1157,7 @@ conf.editor_plugins = {
   -- Prevent the cursor from moving when using shift and filter actions
   -- ~/.config/nvim/Gl0riVim/plugins/editor/stay_in_place.lua
   stay_in_place = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
     event = "VeryLazy",
   },
@@ -1162,6 +1174,12 @@ conf.editor_plugins = {
 --
 --   ╘═════════════════════════════════════════════════════════╛
 conf.ui_plugins = {
+  -- highlight cursor and visual selections in 'cmd mode'
+  --  ~/.config/nvim/Gl0riVim/plugins/ui/cmd_and_cursor.lua
+  cmd_and_cursor = {
+    enable = false,
+    event = "VeryLazy",
+  },
   -- noicer (vim.ui.select)
   --  ~/.config/nvim/Gl0riVim/plugins/ui/dressing.lua
   dressing = {
@@ -1185,17 +1203,18 @@ conf.ui_plugins = {
     mini_inden_scope = {
       enable = true,
       event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-      indent_char = "▏", -- "▎"
+      indent_char = "╎", -- "▎", "▏"
     },
   },
   -- Window animations
   --  ~/.config/nvim/Gl0riVim/plugins/ui/flirt.lua
   flirt = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
   },
   -- Pretty fold
   --  ~/.config/nvim/Gl0riVim/plugins/ui/fold.lua
+  -- HACK: Disabled: 2024-05-08 16:16
   foldding = {
     enable = true,
     keys = { "zM", "zm", "zO", "zo", "zR", "zr" },
@@ -1203,6 +1222,7 @@ conf.ui_plugins = {
   },
   -- color cursur while jumping
   -- ~/.config/nvim/Gl0riVim/plugins/ui/beacon.lua
+  -- HACK: Disabled: 2024-05-08 16:16
   beacon = {
     enable = false,
     event = "VeryLazy",
@@ -1225,6 +1245,7 @@ conf.ui_plugins = {
   },
   -- Fancy notifications
   -- ~/.config/nvim/Gl0riVim/plugins/ui/notify.lua
+  -- HACK: Disabled: 2024-05-08 16:16
   notify = {
     enable = false,
     event = "VeryLazy",
@@ -1241,6 +1262,7 @@ conf.ui_plugins = {
   },
   -- noicer nvim UI
   --  ~/.config/nvim/Gl0riVim/plugins/ui/noice.lua
+  -- HACK: Disabled: 2024-05-08 16:16
   noice = {
     enable = false,
     event = "VeryLazy",
@@ -1299,6 +1321,22 @@ conf.ui_plugins = {
 --
 --   ╘═════════════════════════════════════════════════════════╛
 conf.utils_plugins = {
+  -- highlight chunk
+  -- HACK: Disabled: 2024-05-08 19:32
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/hl_chunk.lua
+  hl_chunk = {
+    enable = false,
+    event = { "CursorHold", "CursorHoldI" },
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/precognition.lua
+  -- HACK: Disabled: 2024-05-08 19:32
+  -- discovering motions
+  precognition = {
+    enable = false,
+    startVisible = true,
+    showBlankVirtLine = true,
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/yanky.lua
   yanky = { -- yank history
     enable = true,
     keys = {
@@ -1358,7 +1396,7 @@ conf.utils_plugins = {
   -- Enable 'StartupTime' command
   --  ~/.config/nvim/Gl0riVim/plugins/utils/startuptime.lua
   startuptime = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-05-08 16:16
     enable = false,
     cmd = "StartupTime",
   },
@@ -1416,6 +1454,7 @@ conf.utils_plugins = {
   },
   -- Terminal
   -- ~/.config/nvim/Gl0riVim/plugins/utils/toggleterm.lua
+  -- HACK: Disabled: 2024-05-08 16:16
   toggleterm = {
     enable = false,
     cmd = "ToggleTerm",
@@ -1513,7 +1552,7 @@ conf.utils_plugins = {
   },
   pomodoro = {
     nomodoro = { -- (https://github.com/dbinagi/nomodoro)
-      -- Disabled: 2024-02-03
+      -- HACK: Disabled: 2024-02-03
       enable = false,
       cmd = { "NomoWork", "NomoBreak", "NomoStop", "NomoStatus", "NomoMenu" },
       keys = {
@@ -1548,14 +1587,14 @@ conf.ai_plugins = {
   -- Codeium Source for 'CMP'
   -- ~/.config/nvim/Gl0riVim/plugins/coding/AIs.lua
   codeium = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
     event = "InsertEnter",
     cmd = "Codeium",
   },
   -- TabNine Source for 'CMP'
   tabnine = {
-    -- Disabled: 2024-02-03
+    -- HACK: Disabled: 2024-02-03
     enable = false,
     event = "InsertEnter",
   },
@@ -1567,6 +1606,7 @@ conf.ai_plugins = {
 --   ╘═════════════════════════════════════════════════════════╛
 conf.games_plugins = {
   --  ~/.config/nvim/Gl0riVim/plugins/games/black_jack.lua
+  -- HACK:
   black_jack = {
     enable = false,
     cmd = "BlackJackNewGame",
@@ -1575,6 +1615,7 @@ conf.games_plugins = {
     suit_style = "black", -- Available: "black" | "white".
   },
   --  ~/.config/nvim/Gl0riVim/plugins/games/cellular_automation.lua
+  -- HACK:
   cellular_automation = {
     enable = false,
     cmd = "CellularAutomaton",
@@ -1585,11 +1626,13 @@ conf.games_plugins = {
     },
   },
   --  ~/.config/nvim/Gl0riVim/plugins/games/duck.lua
+  -- HACK:
   duck = {
     enable = false,
     keys = {}, -- see --> duck.lua
   },
   -- ~/.config/nvim/Gl0riVim/plugins/games/hack.lua
+  -- HACK:
   hack = {
     enable = false,
     cmd = { "HackAuto", "Hack", "HackFollow", "HackFollowAuto" },
@@ -1609,6 +1652,7 @@ conf.games_plugins = {
     max_count = 4,
   },
   --  ~/.config/nvim/Gl0riVim/plugins/games/speed_typer.lua
+  -- HACK: Disabled: 2024-05-08 16:21
   speed_typer = {
     enable = true,
     cmd = "Speedtyper",
@@ -1617,6 +1661,7 @@ conf.games_plugins = {
     },
   },
   --  ~/.config/nvim/Gl0riVim/plugins/games/sudoku.lua
+  -- HACK:
   sudoku = {
     enable = false,
     cmd = "Sudoku",
@@ -1625,8 +1670,9 @@ conf.games_plugins = {
     },
   },
   --  ~/.config/nvim/Gl0riVim/plugins/games/vim_be_good.lua
+  -- HACK: Disabled: 2024-05-08 16:22
   vim_be_good = {
-    enable = true,
+    enable = false,
     cmd = "VimBeGood",
     keys = { { "<leader>Gv", "<cmd>VimBeGood<CR>", desc = "Vim Be Good 󰕷 " } },
   },
@@ -1643,6 +1689,14 @@ conf.theme_plugins = {
     keymap = "<leader>r",
     random_startup = true,
   },
+  -- ~/.config/nvim/Gl0riVim/plugins/themes/ariake.lua
+  ariake = {
+    enable = true,
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/themes/monet.lua
+  monet = {
+    enable = true,
+  },
   -- ~/.config/nvim/Gl0riVim/plugins/themes/neon.lua
   neon = {
     enable = true,
@@ -1654,59 +1708,19 @@ conf.theme_plugins = {
     enable = true,
     transparency = false,
   },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/adwaita.lua
-  adwaita = {
-    -- Disabled: 2024-02-03
-    enable = false,
-    dark_mode = false,
-    transparency = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/calvera.lua
-  calvera = {
-    enable = true,
-  },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/catppuccin.lua
   catppuccin = {
     enable = true,
     style = "mocha", -- Available: latte | frappe | macchiato | mocha
     transparency = false,
   },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/citruszest.lua
-  citruszest = {
-    -- Disabled: 2024-02-03
-    enable = false,
-    transparency = false,
-  },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/cyberdream.lua
   cyberdream = {
     enable = true,
-    transparency = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/darkplus.lua
-  darkplus = {
-    enable = true,
+    transparency = true,
   },
   -- ~/.config/nvim/Gl0riVim/plugins/themes/doom_one.lua
   doom = {
-    enable = true,
-    transparency = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/everblush.lua
-  everblush = {
-    enable = true,
-    transparency = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/juliana.lua
-  juliana = {
-    enable = true,
-  },
-  -- ~/.config/nvim/Gl0riVim/plugins/themes/melange.lua
-  melange = {
-    -- Disabled: 2024-02-03
-    enable = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/mellow.lua
-  mellow = {
     enable = true,
     transparency = false,
   },
@@ -1730,19 +1744,6 @@ conf.theme_plugins = {
     style = "dark", -- Available: dark | light
     transparency = false,
   },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/monokai.lua
-  monokai = {
-    monokai_nightasty = {
-      -- Disabled: 2024-02-03
-      enable = false,
-    },
-    monokai_pro = {
-      -- Disabled: 2024-02-03
-      enable = false,
-      transparency = false,
-      filter = "pro", -- Available: classic | octagon | pro | machine | ristretto | spectrum
-    },
-  },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/moonlight.lua
   moonlight = {
     enable = true,
@@ -1750,28 +1751,10 @@ conf.theme_plugins = {
   --  ~/.config/nvim/Gl0riVim/plugins/themes/nightcity.lua
   nightcity = {
     enable = true,
-    style = "kabuki", -- Available: kabuki | afterlife
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/nightly.lua
-  nightly = {
-    enable = true,
-    style = "white", -- white | blue | black | green | red
-    transparency = false,
+    style = "afterlife", -- Available: kabuki | afterlife
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/nord.lua
   nord = {
-    enable = true,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/nvcode.lua
-  nvcode = {
-    enable = true,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/oceanic_next.lua
-  oceanic = {
-    enable = true,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/oh_lucy.lua
-  oh_lucy = {
     enable = true,
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/onedark.lua
@@ -1785,25 +1768,8 @@ conf.theme_plugins = {
       enable = true,
     },
   },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/oxocarbon.lua
-  oxocarbon = {
-    enable = true,
-  },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/palenightfall.lua
   palenightfall = {
-    enable = true,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/poimandres.lua
-  poimandres = {
-    enable = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/substrata.lua
-  substrata = {
-    enable = true,
-    transparency = false,
-  },
-  --  ~/.config/nvim/Gl0riVim/plugins/themes/vn_night.lua
-  nv_night = {
     enable = true,
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/tokyo.lua
