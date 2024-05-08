@@ -3,7 +3,7 @@ if not neo_tree_status then
   vim.notify("Plugin [neo-tree] failed to load", vim.log.levels.WARN)
   return
 end
--- use a protected call so we don't error out on first use
+
 local icons_status, icons = pcall(require, "icons")
 if not icons_status then
   vim.notify("[icons] failed to load within (neo-tree.lua)", vim.log.levels.WARN)
