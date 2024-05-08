@@ -35,6 +35,8 @@ if rando_opts.enable then
         "neon",
         -- end of fav
 
+        "ariake",
+        "monet",
         "cyberdream",
         "min-theme",
         "vn-night",
@@ -50,7 +52,6 @@ if rando_opts.enable then
         "palenightfall",
         "nordfox",
         "nightcity",
-        -- "onedark_dark",
       },
       night_schemes = {
         -- fav
@@ -70,6 +71,8 @@ if rando_opts.enable then
         "neon",
         -- end of fav
 
+        "ariake",
+        "monet",
         "nightcity",
         "cyberdream",
         "min-theme",
@@ -86,7 +89,6 @@ if rando_opts.enable then
         "palenightfall",
         "nordfox",
         "carbonfox",
-        -- "onedark_dark",
       },
       day_schemes = {
         -- fav
@@ -95,7 +97,8 @@ if rando_opts.enable then
         "gruvbox-material",
         "onedark_vivid",
         -- end of fav
-
+        "monet",
+        "ariake",
         "nightcity",
         "cyberdream",
         "vn-night",
