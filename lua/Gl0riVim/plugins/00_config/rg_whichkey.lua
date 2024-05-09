@@ -299,6 +299,9 @@ local whichkey_registered = {
   --            │                                                         │
   --            ╘═════════════════════════════════════════════════════════╛
 
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/track.lua
+  ["<leader>m"] = { name = "+Mark  " },
+
   -- ~/.config/nvim/Gl0riVim/plugins/utils/undotree.lua
   ["<leader>U"] = { "Toggle UndoTree 󰣜 " },
 
@@ -376,6 +379,8 @@ local whichkey_registered = {
   -- ~/.config/nvim/Gl0riVim/plugins/editor/nvim_surround.lua
   ["<leader>ds"] = "Delete Surround  ",
 
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/screenkey.lua
+  ["<leader>Es"] = "Enable Screenkey 󰧹 ",
   --            ╒═════════════════════════════════════════════════════════╕
   --            │                                                         │
   --            │                   Games Plugins                         │

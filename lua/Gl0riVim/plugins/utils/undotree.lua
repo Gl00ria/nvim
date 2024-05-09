@@ -18,7 +18,7 @@ if undotree_opts.enable then
       vim.cmd([[
             if has("persistent_undo")
 
-            let target_path = expand('~/.custom_db/nvim/')
+            let target_path = expand('~/.custom_db/nvim/plugins/undotree/')
 
             " create the directory and any parent directories
             " if the location does not exist.

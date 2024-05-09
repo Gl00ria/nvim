@@ -1336,6 +1336,7 @@ conf.utils_plugins = {
     startVisible = true,
     showBlankVirtLine = true,
   },
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/screenkey.lua
   screenkey = {
     enable = true,
     cmd = "Screenkey",
@@ -1348,6 +1349,51 @@ conf.utils_plugins = {
     compress_after = 4,
     clear_after = 4,
     group_mappings = false,
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/track.lua
+  -- track files 'harpoon' like
+  track = {
+    enable = true,
+    keys = {
+      { "<leader>mm", "<cmd>Track views<cr>", desc = "View Marked Files 󰈈  " },
+      { "<leader>mf", "<cmd>Mark<cr>", desc = "Mark File  " },
+      { "<leader>mo", "<cmd>MarkOpened<cr>", desc = "Mark Opened Files   " },
+      { "<leader>mu", "<cmd>Unmark<cr>", desc = "Unmark File  " },
+    },
+    cmd = {
+      "Mark",
+      "Unmark",
+      "Track",
+      "MarkOpened",
+      "SelectMark",
+      "StashBundle",
+      "RestoreBundle",
+      "DeleteBundle",
+      "AlternateBundle",
+    },
+    save_path = vim.fn.expand("$HOME") .. "/.custom_db/nvim/plugins/track/track.json",
+    root_path = false,
+    disable_history = true, -- save deleted marks
+    maximum_history = 20, -- limit history
+    border = "rounded",
+    width = 60,
+    height = 10,
+    title_pos = "left", -- row and col will be overridden
+    exclude = {
+      ["^%.git/.*$"] = false,
+      ["^%.git$"] = false,
+      ["^LICENSE$"] = false,
+    },
+    action_keys = {
+      close = "q",
+      select_all = "v",
+      delete_current = "dd",
+      delete_all = "D",
+      change_mark_view = "s",
+      delete_buffer = "<C-b>",
+      move_view_next = "<C-j>",
+      move_view_previous = "<C-k>",
+    },
   },
   -- ~/.config/nvim/Gl0riVim/plugins/utils/yanky.lua
   yanky = { -- yank history
@@ -1448,8 +1494,9 @@ conf.utils_plugins = {
     },
     -- Create, manage, and switch between tmux sessions
     -- ~/.config/nvim/Gl0riVim/plugins/utils/tmux.lua
+    -- HACK: Disabled: 09/05/2024
     tmux_sessionizer = {
-      enable = true,
+      enable = false,
       keys = {
         -- stylua: ignore
         { "<leader>Ts", function() require("workspace") end, desc = "Available Sessions 󱃻 " },
