@@ -11,7 +11,10 @@ local treetype = {}
 if file_explorer_opts.strategy == "nvim-tree" then
   treetype = {
     "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "b0o/nvim-tree-preview.lua",
+    },
     cmd = file_explorer_opts.nvim_tree_opts.cmd,
     keys = file_explorer_opts.nvim_tree_opts.keys,
     config = function()

@@ -16,22 +16,13 @@ if not icons_status then
   return
 end
 
-local git_icons = {
-  unstaged = icons.git.unstaged,
-  staged = icons.git.staged,
-  unmerged = icons.git.git,
-  renamed = icons.git.renamed,
-  untracked = icons.git.untracked,
-  deleted = icons.git.deleted,
-  ignored = icons.git.ignored,
-}
-
 local function on_attach(bufnr)
   local function opts(desc)
     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
   vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+  vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
   vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
   vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
   vim.keymap.set("n", "O", api.node.open.no_window_picker, opts("Open: No Window Picker"))
@@ -73,20 +64,31 @@ end
 
 nvimtree.setup({
   on_attach = on_attach,
+  auto_reload_on_write = true,
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
-  diagnostics = {
-    enable = true,
-    icons = {
-      hint = icons.diagnostics.hint,
-      info = icons.diagnostics.info,
-      warning = icons.diagnostics.Warning,
-      error = icons.diagnostics.error,
+  view = {
+    number = true,
+    relativenumber = true,
+    side = "left",
+    adaptive_size = true,
+    float = {
+      enable = false,
+      quit_on_focus_loss = true,
+      open_win_config = {
+        relative = "editor",
+        border = "rounded",
+        width = 30,
+        height = 30,
+        row = 1,
+        col = 1,
+      },
     },
   },
   renderer = {
+    indent_width = 2,
     add_trailing = true,
-    group_empty = true,
+    group_empty = false,
     highlight_git = true,
     highlight_opened_files = "all",
     root_folder_label = ":~",
@@ -100,10 +102,35 @@ nvimtree.setup({
     },
     icons = {
       webdev_colors = true,
-      git_placement = "before",
+      git_placement = "after",
+      modified_placement = "after",
+      diagnostics_placement = "signcolumn",
+      bookmarks_placement = "signcolumn",
       symlink_arrow = " -> ",
       glyphs = {
-        git = git_icons,
+        default = "",
+        symlink = "",
+        bookmark = "󰆤",
+        modified = "●",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = icons.misc.folder,
+          open = icons.misc.folderOpen,
+          empty = icons.misc.folderNoBg,
+          empty_open = icons.misc.folderOpenNoBg,
+          symlink = icons.misc.symlink,
+          symlink_open = icons.misc.symlinkOpen,
+        },
+        git = {
+          unstaged = icons.git.unstaged,
+          staged = icons.git.staged,
+          unmerged = icons.git.unmarged,
+          renamed = icons.git.renamed,
+          untracked = icons.git.untracked,
+          deleted = icons.git.deleted,
+          ignored = icons.git.ignored,
+        },
       },
       show = {
         file = true,
@@ -111,6 +138,8 @@ nvimtree.setup({
         folder_arrow = true,
         git = true,
         modified = true,
+        diagnostics = true,
+        bookmarks = true,
       },
     },
     special_files = {
@@ -119,6 +148,15 @@ nvimtree.setup({
       "README.md",
       "readme.md",
       "environment.yml",
+    },
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = icons.diagnostics.Hint,
+      info = icons.diagnostics.Info,
+      warning = icons.diagnostics.Warn,
+      error = icons.diagnostics.error,
     },
   },
   update_focused_file = {
@@ -150,21 +188,15 @@ nvimtree.setup({
       },
     },
   },
-  view = {
-    width = 30,
-    adaptive_size = true,
-    side = "left",
-    -- mappings = {
-    --   custom_only = true,
-    -- },
-    number = false,
-    relativenumber = false,
-  },
 })
 
--- vim.api.nvim_set_keymap(
---     "n",
---     "<C-e>",
---     "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>",
---     { noremap = true, silent = true }
--- )
+-- Auto close when 'nvim-tree' is the last window
+-- (https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close)
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+      vim.cmd("quit")
+    end
+  end,
+})
