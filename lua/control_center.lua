@@ -1112,7 +1112,7 @@ conf.editor_plugins = {
   -- = ~/.config/nvim/Gl0riVim/plugins/00_config/neo-tree.lua
   -- = ~/.config/nvim/Gl0riVim/plugins/00_config/nvim-tree.lua
   file_explorer = {
-    strategy = "neo-tree", -- Available: neo-tree, nvim-tree, ranger or none
+    strategy = "nvim-tree", -- Available: neo-tree, nvim-tree, ranger or none
     nvim_tree_opts = {
       keys = {
         { "<leader>e", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = "File Explorer  " },
@@ -1335,6 +1335,19 @@ conf.utils_plugins = {
     enable = false,
     startVisible = true,
     showBlankVirtLine = true,
+  },
+  screenkey = {
+    enable = true,
+    cmd = "Screenkey",
+    keys = {
+      { "<leader>Es", "<cmd>Screenkey<cr>", desc = "Enable Screenkey 󰧹 " },
+    },
+    width = 40,
+    height = 3,
+    border = "rounded",
+    compress_after = 4,
+    clear_after = 4,
+    group_mappings = false,
   },
   -- ~/.config/nvim/Gl0riVim/plugins/utils/yanky.lua
   yanky = { -- yank history
