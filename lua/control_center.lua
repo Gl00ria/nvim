@@ -699,7 +699,19 @@ conf.langs_control = {
         { "<leader>clm", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview  ", ft = "markdown" },
       },
     },
-    markdown_headlines = true, -- installs (https://github.com/lukas-reineke/headlines.nvim)
+    markdown_headlines = false, -- installs (https://github.com/lukas-reineke/headlines.nvim)
+    md_better_headlines = {
+      enable = true, -- installs (https://github.com/MeanderingProgrammer/markdown.nvim)
+      ft = { "markdown", "org", "norg" },
+      headings = { " ", "  ", "   ", "    ", "     ", "      " },
+      -- headings = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
+      dash = "—",
+      -- bullets = { "●", "○", "◆", "◇" },
+      bullets = { "◉", "○", "✸", "✿" },
+      unchecked = "󰄱 ",
+      checked = " ",
+      quote = "┃",
+    },
   },
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/prisma.lua
   prisma = {

@@ -9,6 +9,9 @@ local markdown_opts = settings.langs_control.markdwon
 local md_preview = {}
 local md_headelines = {}
 
+local better_hl_opts = settings.langs_control.markdwon.md_better_headlines
+local md_better_hl = {}
+
 if markdown_opts.markdown_preview.enable then
   md_preview = {
     "iamcco/markdown-preview.nvim",
@@ -56,4 +59,40 @@ if markdown_opts.markdown_headlines then
   }
 end
 
-return { md_preview, md_headelines }
+if better_hl_opts.enable then
+  md_better_hl = {
+    "MeanderingProgrammer/markdown.nvim",
+    ft = better_hl_opts.ft,
+    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      start_enabled = better_hl_opts.enable,
+      file_types = better_hl_opts.file_types,
+      headings = better_hl_opts.headings,
+      dash = better_hl_opts.dash,
+      bullets = better_hl_opts.bullets,
+      quote = better_hl_opts.quote,
+      checkbox = {
+        unchecked = better_hl_opts.unchecked,
+        checked = better_hl_opts.checked,
+      },
+      highlights = {
+        heading = {
+          -- Background of heading line
+          backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
+          -- Foreground of heading character only
+          foregrounds = {
+            "markdownH1",
+            "markdownH2",
+            "markdownH3",
+            "markdownH4",
+            "markdownH5",
+            "markdownH6",
+          },
+        },
+      },
+    },
+  }
+end
+
+return { md_preview, md_headelines, md_better_hl }
