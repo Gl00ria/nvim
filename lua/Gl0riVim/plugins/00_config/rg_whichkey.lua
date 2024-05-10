@@ -436,6 +436,7 @@ local whichkey_registered = {
 
   ["<C-->"] = "Neovide Font Size 󰍴 ",
   ["<C-=>"] = "Neovide Font Size   ",
+  ["<leader>k"] = "Change layout  ",
 
   --            ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   --            ┃                                                         ┃

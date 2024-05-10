@@ -47,4 +47,18 @@ if vim.g.neovide then
       vim.o.guifont = string.gsub(vim.o.guifont, "%d+$", font_size)
     end
   end, { noremap = true })
+
+  vim.keymap.set("n", "<leader>ke", function()
+    vim.cmd("set norightleft")
+    vim.cmd('"guifont = VictorMono\\ NF:h18"')
+  end, { desc = "Change to 'English' layout  " })
+
+  -- Right To Left layout
+  vim.keymap.set("n", "<leader>ka", function()
+    vim.cmd("set rightleft")
+    -- Right To Left Fonts
+    -- guifont = "DejaVu Sans Mono:h18",
+    -- guifont = "Vazir Code Hack:h18",
+    vim.cmd('"guifont = "Kawkab Mono:h18"')
+  end, { desc = "Change to 'Right to Left' layout 󱌨 " })
 end

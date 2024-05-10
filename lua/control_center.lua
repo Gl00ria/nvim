@@ -85,6 +85,12 @@ conf.options = {
   -- guifont = "JetBrainsMono\\ Nerd\\ Font:h16",
   -- guifont = "Hack:h16",
   -- guifont = "Maple Mono:h18",
+
+  -- Right To Left Fonts
+  -- guifont = "DejaVu Sans Mono:h18",
+  -- guifont = "Vazir Code Hack:h18",
+  -- guifont = "Kawkab Mono:h18",
+
   ignorecase = true, -- Needed for smartcase
   laststatus = 3, -- Global statusline at the bottom
   list = true,
