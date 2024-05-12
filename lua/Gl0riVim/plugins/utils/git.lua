@@ -10,6 +10,9 @@ local gitsigns = {}
 local git_blame_opts = settings.utils_plugins.git_blame
 local gitblame = {}
 
+local git_dev_opts = settings.utils_plugins.git_dev
+local gitdev = {}
+
 if git_signs_opts.enable then
   gitsigns = {
     event = git_signs_opts.event,
@@ -142,6 +145,43 @@ if git_blame_opts.enable then
   }
 end
 
+if git_dev_opts.enable then
+  gitdev = {
+    "moyiz/git-dev.nvim",
+    keys = git_dev_opts.keys,
+    opts = {
+      ephemeral = git_dev_opts.ephemeral, -- delete opened repo when exiting nvim, use `GitDevCleanAll` to clean
+      read_only = git_dev_opts.read_only, -- open repositories to be read-only
+      cd_type = git_dev_opts.cd_type, -- Available: global|tab|window|none
+      repositories_dir = git_dev_opts.repositories_dir,
+      base_uri_format = git_dev_opts.base_uri_format,
+      clone_args = git_dev_opts.clone_args,
+      fetch_args = git_dev_opts.fetch_args,
+      checkout_args = git_dev_opts.checkout_args,
+      -- opener = function(dir, _, selected_path)
+      --   vim.cmd("tabnew")
+      --   vim.cmd("Neotree " .. dir)
+      --   if selected_path then
+      --     vim.cmd("edit " .. selected_path)
+      --   end
+      -- end,
+      opener = function(dir, _, selected_path)
+        local file_explorer_opts = settings.editor_plugins.file_explorer
+        if file_explorer_opts.strategy == "nvim-tree" then
+          vim.cmd("tabnew")
+          vim.cmd("NvimTreeOpen " .. vim.fn.fnameescape(dir))
+        elseif file_explorer_opts.strategy == "neo-tree" then
+          vim.cmd("tabnew")
+          vim.cmd("Neotree " .. dir)
+        end
+        if selected_path then
+          vim.cmd("edit " .. selected_path)
+        end
+      end,
+    },
+  }
+end
+
 local git_treesitter = {}
 if git_signs_opts.ts_git then
   git_treesitter = {
@@ -154,4 +194,4 @@ if git_signs_opts.ts_git then
   }
 end
 
-return { gitblame, gitsigns, git_treesitter }
+return { gitblame, gitsigns, gitdev, git_treesitter }

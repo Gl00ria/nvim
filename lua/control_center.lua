@@ -957,7 +957,7 @@ conf.editor_plugins = {
   -- ~/.config/nvim/Gl0riVim/plugins/editor/bufferline.lua
   -- HACK:wait for the next update with nvim-nightly, checked on 2024-05-08
   bufferline = {
-    enable = false,
+    enable = true,
     event = "VeryLazy",
     keys = {
       { "<leader>bb", "<cmd>BufferLineMovePrev<CR>", desc = "Move Buffer Back   " },
@@ -1157,6 +1157,7 @@ conf.editor_plugins = {
       },
     },
     ranger_opts = {
+      cmd = "RnvimrToggle",
       keys = { "<leader>e", "<cmd>RnvimrToggle<cr>", desc = "File Explorer  " },
     },
   },
@@ -1617,6 +1618,35 @@ conf.utils_plugins = {
       text_object = "<leader>ghi",
     },
   },
+  git_dev = {
+    enable = true,
+    keys = {
+      {
+        "<leader>go",
+        function()
+          local repo = vim.fn.input("Repository name / URI: ")
+          if repo ~= "" then
+            require("git-dev").open(repo)
+          end
+        end,
+        desc = "Open a remote git repository 󰊢 ",
+      },
+      {
+        "<leader>gx",
+        "<cmd>GitDevCleanAll<cr>",
+        desc = "Clean a cloned git repository 󰊢 ",
+      },
+    },
+    ephemeral = false, -- delete opened repo when exiting nvim, use `GitDevCleanAll` to clean
+    read_only = true, -- open repositories to be read-only
+    cd_type = "tab", -- Available: global|tab|window|none
+    -- repositories_dir = vim.fn.stdpath("cache") .. "/git-dev",
+    repositories_dir = vim.fn.expand("$HOME") .. "/.custom_db/nvim/plugins/git_dev/cloned/",
+    base_uri_format = "https://github.com/%s.git",
+    clone_args = "--jobs=2 --single-branch --recurse-submodules " .. "--shallow-submodules",
+    fetch_args = "--jobs=2 --no-all --update-shallow -f --prune --no-tags",
+    checkout_args = "-f --recurse-submodules", -- Arguments for `git checkout`.
+  },
   -- Emojies picker
   -- ~/.config/nvim/Gl0riVim/plugins/utils/emoji_picker.lua
   emojies_picker = {
@@ -1828,7 +1858,7 @@ conf.theme_plugins = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/nightcity.lua
   nightcity = {
-    enable = true,
+    enable = false,
     style = "afterlife", -- Available: kabuki | afterlife
   },
   --  ~/.config/nvim/Gl0riVim/plugins/themes/nord.lua
