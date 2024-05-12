@@ -49,7 +49,6 @@ if rando_opts.enable then
         "catppuccin-mocha",
         "palenightfall",
         "nordfox",
-        "nightcity",
       },
       night_schemes = {
         -- fav
@@ -70,7 +69,6 @@ if rando_opts.enable then
 
         "ariake",
         "monet",
-        "nightcity",
         "cyberdream",
         "min-theme",
         "tokyonight-night",
@@ -96,7 +94,6 @@ if rando_opts.enable then
         -- end of fav
         "monet",
         "ariake",
-        "nightcity",
         "cyberdream",
         "vn-night",
         "tokyonight-day",
