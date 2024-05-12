@@ -866,6 +866,7 @@ conf.editor_plugins = {
     nvchad_borderchars = false,
     find_files_show_hidden = true,
     grep_hidden = true, -- enable grepping in hidden files
+    reverse_directories = true, -- reverse path display with highlighting
     keys = {
       -- Files
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files 󰱼 " },
@@ -955,7 +956,6 @@ conf.editor_plugins = {
     },
   },
   -- ~/.config/nvim/Gl0riVim/plugins/editor/bufferline.lua
-  -- HACK:wait for the next update with nvim-nightly, checked on 2024-05-08
   bufferline = {
     enable = true,
     event = "VeryLazy",

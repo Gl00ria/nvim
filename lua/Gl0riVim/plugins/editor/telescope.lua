@@ -203,6 +203,11 @@ if telescope_opts.enable then
           grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
           qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
           buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+          path_display = {
+            filename_first = {
+              reverse_directories = telescope_opts.reverse_directories,
+            },
+          },
         },
         pickers = {
           find_files = {
