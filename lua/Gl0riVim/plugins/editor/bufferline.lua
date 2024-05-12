@@ -13,7 +13,6 @@ if bufferline_opts.enable then
     "akinsho/bufferline.nvim",
     event = bufferline_opts.event,
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    version = "*",
     keys = bufferline_opts.keys,
     config = function()
       local bufferline_status, bufferline_ = pcall(require, "bufferline")

@@ -12,6 +12,7 @@ if settings.langs_control.hypr.enable then
     {
       event = settings.langs_control.hypr.event,
       "luckasRanarison/tree-sitter-hypr",
+      after = "nvim-treesitter",
       build = ":TSUpdate hypr",
       config = function()
         -- ft detection for hyprland

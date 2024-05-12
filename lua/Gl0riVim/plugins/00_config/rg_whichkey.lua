@@ -675,15 +675,6 @@ local whichkey_registered = {
   ["<C-V>"] = "Start VISUAL BLOCK mode",
   ["aw"] = "Mark a Word 󰈭 ",
 
-  -- much better
-  -- use ( [ { " ' <
-  -- ["ab"] = "Mark a Block with () ",
-  -- ["aB"] = "Mark a Block with {} ",
-  -- ["at"] = "Mark a Block with < > ",
-  -- ["ib"] = "Mark a Block with () ",
-  -- ["iB"] = "Mark a Block with {} ",
-  -- ["it"] = "Mark a Block with <> ",
-
   ["v"] = {
     name = "Visual Mode 󰕷 ",
     ["$"] = "To END of Line  ",

@@ -40,6 +40,7 @@ elseif file_explorer_opts.strategy == "ranger" then
   treetype = {
     "kevinhwang91/rnvimr",
     keys = file_explorer_opts.ranger_opts.keys,
+    cmd = file_explorer_opts.ranger_opts.cmd,
     init = function()
       vim.g.rnvimr_enable_picker = 1
       vim.g.rnvimr_border_attr = { fg = 3, bg = -1 }
