@@ -78,7 +78,7 @@ conf.options = {
   -- use "set guifont=*" to see available fonts on your system
   -- guifont = "FiraCode Nerd Font",
   -- guifont = "Iosevka\\ NF:h18",
-  guifont = "VictorMono\\ NF:h18",
+  -- guifont = "VictorMono\\ NF:h18",
   -- guifont = "FantasqueSansMono\\ Nerd\\ Font\\ Mono:h18",
   -- guifont = "CaskaydiaCove Nerd Font Mono:h16",
   -- guifont = "CaskaydiaCove Nerd Font:h16",
@@ -87,7 +87,7 @@ conf.options = {
   -- guifont = "Maple Mono:h18",
 
   -- Right To Left Fonts
-  -- guifont = "DejaVu Sans Mono:h18",
+  guifont = "DejaVu Sans Mono:h18",
   -- guifont = "Vazir Code Hack:h18",
   -- guifont = "Kawkab Mono:h18",
 

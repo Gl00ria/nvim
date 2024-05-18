@@ -57,8 +57,8 @@ if vim.g.neovide then
   vim.keymap.set("n", "<leader>ka", function()
     vim.cmd("set rightleft")
     -- Right To Left Fonts
-    -- guifont = "DejaVu Sans Mono:h18",
-    -- guifont = "Vazir Code Hack:h18",
-    vim.cmd('"guifont = "Kawkab Mono:h18"')
+    -- vim.cmd('"set guifont = "DejaVu Sans Mono:h18')
+    -- vim.cmd('"set guifont = "Vazir Code Hack:h18"')
+    -- vim.cmd('"set guifont = "Kawkab Mono:h18"')
   end, { desc = "Change to 'Right to Left' layout 󱌨 " })
 end
