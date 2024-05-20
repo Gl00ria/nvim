@@ -638,7 +638,7 @@ conf.langs_control = {
   -- conf.enable_langs_eslint = false -- js
   -- conf.enable_esclintd_mason = false -- Mason installs --> "eslint_d"
   eslint = {
-    enable = false, -- lspconfig js
+    enable = true, -- lspconfig js
     mason_eslint = true, -- mason: "eslint_d"
   },
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/graphql.lua

@@ -50,8 +50,8 @@ if html_css_opts.mason_tailwind then
       end,
     },
     lspconfig.tailwindcss.setup({
-      -- on_attach = require("Gl0riVim.plugins.00_config.lsp.servers.tailwindcss").on_attach,
-      -- capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
+      on_attach = require("Gl0riVim.plugins.00_config.lsp.servers.tailwindcss").on_attach,
+      capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
       handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
       filetypes = require("Gl0riVim.plugins.00_config.lsp.servers.tailwindcss").filetypes,
       filetypes_exclude = { "markdown" },
@@ -61,11 +61,13 @@ if html_css_opts.mason_tailwind then
   }
 end
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 if html_css_opts.enable_css then
   css = {
     lspconfig.cssls.setup({
-      -- capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
-      -- handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
+      capabilities = capabilities,
+      handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
       on_attach = require("Gl0riVim.plugins.00_config.lsp.servers.cssls").on_attach,
       settings = require("Gl0riVim.plugins.00_config.lsp.servers.cssls").settings,
     }),
