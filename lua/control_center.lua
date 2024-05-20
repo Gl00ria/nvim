@@ -793,7 +793,7 @@ conf.langs_control = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/typescript.lua
   typescript = {
-    typescript_type = "tools", -- Available: tsserver | tools | none
+    typescript_type = "tsserver", -- Available: tsserver | tools | none
     conform_typescript = true, -- uses --> "prettier" for "javascript", "javascriptreact", "typescript", "typescriptreact"
     ts_typscript = true, -- treesitter: "typescript", "javascript", "svelte", "tsx"
     --  Asynchronous interface to run project-wide TypeScript type-checking using the compiler (tsc)

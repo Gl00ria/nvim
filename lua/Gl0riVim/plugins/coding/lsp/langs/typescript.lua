@@ -31,15 +31,15 @@ if typescript_opts.typescript_type == "tools" then
   }
 elseif typescript_opts.typescript_type == "tsserver" then
   local function ts_server_choice()
-    local table_contains = require("util").table_contains
-    local formatters_linters = settings.formatters_linters
+    -- local table_contains = require("util").table_contains
+    -- local formatters_linters = settings.formatters_linters
     local api = vim.api
 
     -- make sure to only run this once!
-    local formatter_bin = "eslint_d"
-    if table_contains(formatters_linters, "prettier") then
-      formatter_bin = "prettier"
-    end
+    -- local formatter_bin = "eslint_d"
+    -- if table_contains("prettier") then
+    --   formatter_bin = "prettier"
+    -- end
     local tsserver_on_attach = function(client, bufnr)
       -- disable tsserver formatting if you plan on formatting via null-ls or conform
       client.server_capabilities.document_formatting = false
@@ -58,7 +58,7 @@ elseif typescript_opts.typescript_type == "tsserver" then
         eslint_opts = {},
         -- formatting
         enable_formatting = true,
-        formatter = formatter_bin,
+        formatter = "prettier",
         formatter_opts = {},
         -- update imports on file move
         update_imports_on_move = true,
