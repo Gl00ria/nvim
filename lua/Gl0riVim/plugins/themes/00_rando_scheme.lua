@@ -5,7 +5,6 @@ if not settings_status then
 end
 
 local rando_opts = settings.theme_plugins.rando_scheme
-local key = settings.plugins_keymaps
 
 local rando_scheme = {}
 
@@ -32,6 +31,7 @@ if rando_opts.enable then
         "duskfox",
         "doom-one",
         "neon",
+        "neofusion",
         -- end of fav
 
         "ariake",
@@ -65,6 +65,7 @@ if rando_opts.enable then
         "duskfox",
         "doom-one",
         "neon",
+        "neofusion",
         -- end of fav
 
         "ariake",
@@ -91,6 +92,7 @@ if rando_opts.enable then
         "onedark",
         "gruvbox-material",
         "onedark_vivid",
+        "neofusion",
         -- end of fav
         "monet",
         "ariake",

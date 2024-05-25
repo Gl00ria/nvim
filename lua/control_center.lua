@@ -1811,6 +1811,10 @@ conf.theme_plugins = {
     keymap = "<leader>r",
     random_startup = true,
   },
+  -- ~/.config/nvim/Gl0riVim/plugins/themes/neofusion.lua
+  neofusion = {
+    enable = true,
+  },
   -- ~/.config/nvim/Gl0riVim/plugins/themes/ariake.lua
   ariake = {
     enable = true,
