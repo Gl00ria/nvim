@@ -5,6 +5,8 @@ if not settings_status then
 end
 
 local typescript_opts = settings.langs_control.typescript
+local mason_ts = {}
+local ts_err_trans = {}
 
 local ts_server = {}
 if typescript_opts.typescript_type == "tools" then
@@ -91,6 +93,25 @@ elseif typescript_opts.typescript_type == "tsserver" then
       settings = require("Gl0riVim.plugins.00_config.lsp.servers.tsserver").settings,
       on_attach = tsserver_on_attach,
     })
+
+    if typescript_opts.mason_ts then
+      mason_ts = {
+        "mason.nvim",
+        opts = function(_, opts)
+          opts.ensure_installed = opts.ensure_installed or {}
+          vim.list_extend(opts.ensure_installed, { "typescript-language-server" })
+        end,
+      }
+    end
+
+    if typescript_opts.ts_error_translator then
+      ts_err_trans = {
+        "dmmulroy/ts-error-translator.nvim",
+        config = function()
+          require("ts-error-translator").setup()
+        end,
+      }
+    end
   end
 
   ts_server = {
@@ -162,6 +183,8 @@ end
 
 return {
   ts_server,
+  mason_ts,
+  ts_err_trans,
   tsc,
   template_string,
   typescript_treesitter,

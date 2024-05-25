@@ -638,7 +638,7 @@ conf.langs_control = {
   -- conf.enable_langs_eslint = false -- js
   -- conf.enable_esclintd_mason = false -- Mason installs --> "eslint_d"
   eslint = {
-    enable = true, -- lspconfig js
+    enable = false, -- lspconfig js
     mason_eslint = true, -- mason: "eslint_d"
   },
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/graphql.lua
@@ -650,15 +650,17 @@ conf.langs_control = {
   },
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/html_css.lua
   html_css = {
-    enable_html = false, -- lspconfig
-    conform_html = true, -- uses "prettier"
+    enable_emmetls = true, -- lspconfig
+    mason_emmitls = true, -- mason: "emmitls"
+    ts_html_css = true, -- treesitter: "html", "css"
+    enable_html = true, -- lspconfig
+    enable_htmx = true,
     enable_css = true, -- lspconfig
     conform_css = true, -- uses "prettier"
-    ts_html_css = true, -- treesitter: "html", "css"
-    mason_cssmodules = true, -- mason: "cssmodules_ls"
     mason_tailwind = true, -- mason: "tailwindcss-language-server"
-    enable_emmetls = false, -- lspconfig
-    mason_emmitls = false, -- mason: "emmitls"
+
+    conform_html = true, -- uses "prettier"
+    mason_cssmodules = true, -- mason: "cssmodules_ls"
   },
   -- ~/.config/nvim/Gl0riVim/plugins/coding/langs/hypr.lua
   hypr = {
@@ -723,6 +725,7 @@ conf.langs_control = {
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/python.lua
   python = {
     enable = true,
+    mason_pyright = true, -- mason: "pyright"
     ts_python = true, -- treesitter: "ninja", "python", "rst", "toml"
     env_select = true, -- installs (https://github.com/linux-cultist/venv-selector.nvim)
     conform_python = true, -- uses: "black", "isort"
@@ -794,6 +797,8 @@ conf.langs_control = {
   --  ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/typescript.lua
   typescript = {
     typescript_type = "tsserver", -- Available: tsserver | tools | none
+    mason_ts = true, -- mason: "typescript-language-server"
+    ts_error_translator = true,
     conform_typescript = true, -- uses --> "prettier" for "javascript", "javascriptreact", "typescript", "typescriptreact"
     ts_typscript = true, -- treesitter: "typescript", "javascript", "svelte", "tsx"
     --  Asynchronous interface to run project-wide TypeScript type-checking using the compiler (tsc)
@@ -813,7 +818,7 @@ conf.langs_control = {
   },
   -- ~/.config/nvim/Gl0riVim/plugins/coding/lsp/langs/vuels.lua
   vue = {
-    enable = false,
+    enable = true,
     conform_vue = true, -- uses; "prettier"
     mason_vue = true, -- mason: "vue-language-server"
     ts_vue = true, -- treesitter: "vue"
@@ -1130,7 +1135,7 @@ conf.editor_plugins = {
   -- = ~/.config/nvim/Gl0riVim/plugins/00_config/neo-tree.lua
   -- = ~/.config/nvim/Gl0riVim/plugins/00_config/nvim-tree.lua
   file_explorer = {
-    strategy = "nvim-tree", -- Available: neo-tree, nvim-tree, ranger or none
+    strategy = "neo-tree", -- Available: neo-tree, nvim-tree, ranger or none
     nvim_tree_opts = {
       keys = {
         { "<leader>e", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = "File Explorer  " },
@@ -1193,6 +1198,14 @@ conf.editor_plugins = {
 --
 --   ╘═════════════════════════════════════════════════════════╛
 conf.ui_plugins = {
+  fidget = {
+    enable = false,
+    event = "LspAttach",
+    normal_hl = "Comment", -- Base highlight group in the notification window
+    winblend = 100, -- Background color opacity in the notification window
+    border = "none", -- Border around the notification window
+    align = "top", -- How to align the notification window
+  },
   -- highlight cursor and visual selections in 'cmd mode'
   --  ~/.config/nvim/Gl0riVim/plugins/ui/cmd_and_cursor.lua
   cmd_and_cursor = {
@@ -1283,7 +1296,7 @@ conf.ui_plugins = {
   --  ~/.config/nvim/Gl0riVim/plugins/ui/noice.lua
   -- HACK: Disabled: 2024-05-08 16:16
   noice = {
-    enable = false,
+    enable = true,
     event = "VeryLazy",
     keys = {
       {

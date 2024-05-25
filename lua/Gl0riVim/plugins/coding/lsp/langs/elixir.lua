@@ -12,13 +12,28 @@ local neotest_elixir = {}
 local none_ls_elixir = {}
 local nvim_lint_elixir = {}
 
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+  vim.notify("[lspconfig] failed to load within (elixir.lua)", vim.log.levels.WARN)
+  return
+end
+
 if elixir_opts.enable then
   elixir = {
-    "mason.nvim",
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "elixir-ls" })
-    end,
+    {
+      "mason.nvim",
+      opts = function(_, opts)
+        opts.ensure_installed = opts.ensure_installed or {}
+        vim.list_extend(opts.ensure_installed, { "elixir-ls" })
+      end,
+    },
+    {
+      lspconfig.elixirls.setup({
+        filetypes = { "elixir", "eelixir", "heex", "surface" },
+        cmd = { "elixir-ls", "--studio" },
+        single_file_support = true,
+      }),
+    },
   }
 
   if elixir_opts.ts_elixir then

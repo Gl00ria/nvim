@@ -146,8 +146,21 @@ if settings.coding_plugins.lspconfig.enable then
       -- table.insert(runtime_path, "lua/?/init.lua")
 
       lspconfig.lua_ls.setup({
+        cmd = { "lua-language-server" },
+        filetypes = { "lua" },
+
         capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
         handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
+        root_dir = lspconfig.util.root_pattern(
+          ".luarc.json",
+          ".luarc.jsonc",
+          ".luacheckrc",
+          ".stylua.toml",
+          "stylua.toml",
+          "selene.toml",
+          "selene.yml",
+          ".git"
+        ),
         neodev.setup({
           library = { plugins = { "nvim-dap-ui" }, types = true },
           setup_jsonls = true,

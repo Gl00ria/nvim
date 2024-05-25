@@ -1,5 +1,7 @@
 local M = {}
 
+M.cmd = { "tailwindcss-language-server", "--stdio" }
+
 M.on_attach = function(client, bufnr)
   if client.server_capabilities.colorProvider then
     require("Gl0riVim.plugins.00_config.coding.lsp.utils.documentcolors").buf_attach(bufnr)
@@ -7,7 +9,56 @@ M.on_attach = function(client, bufnr)
   end
 end
 
-M.filetypes = { "html", "mdx", "javascript", "javascriptreact", "typescriptreact", "vue", "svelte" }
+M.filetypes = {
+  "aspnetcorerazor",
+  "astro",
+  "astro-markdown",
+  "blade",
+  "clojure",
+  "django-html",
+  "htmldjango",
+  "edge",
+  "eelixir",
+  "elixir",
+  "ejs",
+  "erb",
+  "eruby",
+  "gohtml",
+  "gohtmltmpl",
+  "haml",
+  "handlebars",
+  "hbs",
+  "html",
+  "html-eex",
+  "heex",
+  "jade",
+  "leaf",
+  "liquid",
+  "markdown",
+  "mdx",
+  "mustache",
+  "njk",
+  "nunjucks",
+  "php",
+  "razor",
+  "slim",
+  "twig",
+  "css",
+  "less",
+  "postcss",
+  "sass",
+  "scss",
+  "stylus",
+  "sugarss",
+  "javascript",
+  "javascriptreact",
+  "reason",
+  "rescript",
+  "typescript",
+  "typescriptreact",
+  "vue",
+  "svelte",
+}
 
 M.init_options = {
   userLanguages = {
@@ -16,8 +67,30 @@ M.init_options = {
   },
 }
 
+M.root_dir = function()
+  local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+  if not lspconfig_status then
+    vim.notify("[lspconfig] failed to load within (00_config/lsp/servers/tailwindcss.lua)", vim.log.levels.WARN)
+    return
+  end
+  lspconfig.util.root_pattern(
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "postcss.config.cjs",
+    "postcss.config.mjs",
+    "postcss.config.ts",
+    "package.json",
+    "node_modules",
+    ".git"
+  )
+end
+
 M.settings = {
   tailwindCSS = {
+    classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
     lint = {
       cssConflict = "warning",
       invalidApply = "error",
@@ -39,6 +112,7 @@ M.settings = {
         { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
       },
     },
+
     validate = true,
   },
 }

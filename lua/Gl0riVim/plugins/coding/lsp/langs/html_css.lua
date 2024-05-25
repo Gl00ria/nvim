@@ -13,14 +13,20 @@ if not lspconfig_status then
 end
 
 local html = {}
+local htmx = {}
 local css = {}
 local html_conform = {}
 local css_conform = {}
 local cssmodules_ls_mason = {}
 local html_css_treesitter = {}
+
 if html_css_opts.enable_html then
   html = {
     lspconfig.html.setup({
+      cmd = require("Gl0riVim.plugins.00_config.lsp.servers.html").cmd,
+      filetypes = require("Gl0riVim.plugins.00_config.lsp.servers.html").filetypes,
+      init_options = require("Gl0riVim.plugins.00_config.lsp.servers.html").init_options,
+      single_file_support = require("Gl0riVim.plugins.00_config.lsp.servers.html").single_file_support,
       settings = require("Gl0riVim.plugins.00_config.lsp.servers.html").settings,
       capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
       handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
@@ -39,6 +45,16 @@ if html_css_opts.enable_html then
   end
 end
 
+if html_css_opts.enable_htmx then
+  htmx = {
+    lspconfig.htmx.setup({
+      cmd = { "htmx-lsp" },
+      filetypes = { "html" },
+      single_file_support = true,
+    }),
+  }
+end
+
 local tailwindcss = {}
 if html_css_opts.mason_tailwind then
   tailwindcss = {
@@ -46,10 +62,12 @@ if html_css_opts.mason_tailwind then
       "mason.nvim",
       opts = function(_, opts)
         opts.ensure_installed = opts.ensure_installed or {}
-        vim.list_extend(opts.ensure_installed, { "tailwindcss-language-server" })
+        vim.list_extend(opts.ensure_installed, { "tailwindcss-language-server", "astro-language-server" })
       end,
     },
     lspconfig.tailwindcss.setup({
+      cmd = require("Gl0riVim.plugins.00_config.lsp.servers.tailwindcss").cmd,
+      root_dir = require("Gl0riVim.plugins.00_config.lsp.servers.tailwindcss").root_dir,
       on_attach = require("Gl0riVim.plugins.00_config.lsp.servers.tailwindcss").on_attach,
       capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
       handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
@@ -61,15 +79,17 @@ if html_css_opts.mason_tailwind then
   }
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 if html_css_opts.enable_css then
   css = {
     lspconfig.cssls.setup({
-      capabilities = capabilities,
+      require("Gl0riVim.plugins.00_config.lsp.servers.cssls").capabilities,
       handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
       on_attach = require("Gl0riVim.plugins.00_config.lsp.servers.cssls").on_attach,
       settings = require("Gl0riVim.plugins.00_config.lsp.servers.cssls").settings,
+      root_dir = lspconfig.util.root_pattern("package.json", ".git"),
     }),
   }
 
@@ -79,7 +99,8 @@ if html_css_opts.enable_css then
         "mason.nvim",
         opts = function(_, opts)
           opts.ensure_installed = opts.ensure_installed or {}
-          vim.list_extend(opts.ensure_installed, { "cssmodules-language-server" })
+          -- vim.list_extend(opts.ensure_installed, { "cssmodules-language-server" })
+          vim.list_extend(opts.ensure_installed, { "htmx-lsp", "html-lsp", "css-lsp" })
         end,
       },
     }
@@ -109,6 +130,7 @@ if html_css_opts.ts_html_css then
 end
 return {
   html,
+  htmx,
   html_conform,
   tailwindcss,
   css,

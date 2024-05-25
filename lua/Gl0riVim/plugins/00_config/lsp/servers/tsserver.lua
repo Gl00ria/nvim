@@ -40,7 +40,7 @@ M.typescript_tools_handlers = {
   ),
   ["textDocument/definition"] = function(err, result, method, ...)
     P(result)
-    if vim.tbl_islist(result) and #result > 1 then
+    if vim.islist(result) and #result > 1 then
       local filtered_result = filter(result, filterReactDTS)
       return baseDefinitionHandler(err, filtered_result, method, ...)
     end
@@ -49,7 +49,33 @@ M.typescript_tools_handlers = {
   end,
 }
 
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+  vim.notify(
+    "[lspconfig] failed to load within (00_config/lsp/servers/tsserver.lua) from ts_server_choice",
+    vim.log.levels.WARN
+  )
+  return
+end
+
 M.settings = {
+  cmd = { "typescript-language-server", "--stdio" },
+  root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git"),
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    },
+  },
+  filetypes = {
+    "html",
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "vue",
+  },
   typescript = {
     inlayHints = {
       includeInlayParameterNameHints = "all",

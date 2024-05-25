@@ -5,6 +5,7 @@ if not settings_status then
 end
 
 local python_opts = settings.langs_control.python
+local pyright = {}
 
 local venv_path = os.getenv("VIRTUAL_ENV")
 local py_path = nil
@@ -45,26 +46,41 @@ local python_env_select = {}
 
 if python_opts.enable then
   python = {
-    lspconfig.pylsp.setup({
+    -- lspconfig.pylsp.setup({
+    --   capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
+    --   handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
+    --   settings = {
+    --     pylsp = {
+    --       plugins = {
+    --         -- type checker
+    --         pylsp_mypy = {
+    --           enabled = true,
+    --           overrides = { "--python-executable", py_path, true },
+    --           report_progress = true,
+    --           live_mode = false,
+    --         },
+    --         -- auto-completion options
+    --         jedi_completion = { fuzzy = true },
+    --       },
+    --     },
+    --   },
+    --   flags = {
+    --     debounce_text_changes = 200,
+    --   },
+    -- }),
+    lspconfig.pyright.setup({
       capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
       handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
       settings = {
-        pylsp = {
-          plugins = {
-            -- type checker
-            pylsp_mypy = {
-              enabled = true,
-              overrides = { "--python-executable", py_path, true },
-              report_progress = true,
-              live_mode = false,
-            },
-            -- auto-completion options
-            jedi_completion = { fuzzy = true },
+        python = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = "openFilesOnly",
+            useLibraryCodeForTypes = true,
           },
         },
-      },
-      flags = {
-        debounce_text_changes = 200,
       },
     }),
     -- lspconfig.pyright.setup({
@@ -75,6 +91,16 @@ if python_opts.enable then
       require("Gl0riVim.plugins.00_config.lsp.servers.python").attach(client)
     end),
   }
+  if python_opts.mason_pyright then
+    pyright = {
+      "mason.nvim",
+      opts = function(_, opts)
+        opts.ensure_installed = opts.ensure_installed or {}
+        vim.list_extend(opts.ensure_installed, { "pyright" })
+      end,
+    }
+  end
+
   if python_opts.ts_python then
     python_treesitter = {
       "nvim-treesitter/nvim-treesitter",
@@ -174,6 +200,7 @@ end
 
 return {
   python,
+  pyright,
   python_env_select,
   python_conform,
   python_semshi,

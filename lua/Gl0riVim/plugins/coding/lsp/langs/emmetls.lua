@@ -13,26 +13,54 @@ end
 local emmetls = {}
 local emmetls_mason = {}
 
-if settings.enable_langs_emmetls then
+if settings.langs_control.html_css.enable_emmetls then
   emmetls = {
     lspconfig.emmet_ls.setup({
       capabilities = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").capabilities,
       handlers = require("Gl0riVim.plugins.00_config.lsp.servers.00_handlers_capabilites").handlers,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+      filetypes = {
+        "css",
+        "eruby",
+        "html",
+        -- "javascript",
+        "javascriptreact",
+        "less",
+        "sass",
+        "scss",
+        "svelte",
+        "pug",
+        "typescriptreact",
+        "vue",
+      },
+      init_options = {
+        --- @type string[]
+        excludeLanguages = {},
+        --- @type string[]
+        extensionsPath = {},
+        --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
+        preferences = {},
+        --- @type boolean Defaults to `true`
+        showAbbreviationSuggestions = true,
+        --- @type "always" | "never" Defaults to `"always"`
+        showExpandedAbbreviation = "always",
+        --- @type boolean Defaults to `false`
+        showSuggestionsAsSnippets = false,
+        --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
+        syntaxProfiles = {},
+        --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
+        variables = {},
+      },
     }),
   }
-  if settings.enable_emmetls_mason then
+  if settings.langs_control.html_css.mason_emmitls then
     emmetls_mason = {
       "mason.nvim",
       opts = function(_, opts)
         opts.ensure_installed = opts.ensure_installed or {}
-        vim.list_extend(opts.ensure_installed, { "emmet-ls" })
+        vim.list_extend(opts.ensure_installed, { "emmet-language-server" })
       end,
     }
   end
 end
 
-return {
-  emmetls,
-  emmetls_mason,
-}
+return { emmetls, emmetls_mason }
