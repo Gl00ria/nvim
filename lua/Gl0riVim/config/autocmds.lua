@@ -96,12 +96,36 @@ autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- inlayhints
-vim.api.nvim_create_autocmd("LspAttach", {
+autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client.server_capabilities.inlayHintProvider then
       vim.lsp.inlay_hint.enable(false)
+    end
+  end,
+})
+
+-- highlight when '/' or '?'
+-- autocmd("ModeChanged", {
+--   callback = function()
+--     if vim.fn.getcmdtype() == "/" or vim.fn.getcmdtype() == "?" then
+--       vim.opt.hlsearch = true
+--     else
+--       vim.opt.hlsearch = false
+--     end
+--   end,
+--   desc = "Highlighting matched words when searching",
+-- })
+
+-- open help page to the left
+autocmd({ "BufWinEnter" }, {
+  desc = "Open new help/man windows to the left",
+  pattern = "*",
+  callback = function()
+    if (vim.bo.buftype == "help" or vim.bo.filetype == "man") and vim.w["help_man_moved"] == nil then
+      vim.cmd("wincmd H")
+      vim.w["help_man_moved"] = 1
     end
   end,
 })
