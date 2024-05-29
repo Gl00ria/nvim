@@ -117,6 +117,7 @@ conf.options = {
   splitright = true, -- Vertical splits will automatically be to the right
   swapfile = false, -- Swap not needed
   tabstop = 2, -- Insert 2 spaces for a tab
+  -- NOTE: enabled by default on v(0.10.0)
   termguicolors = true, -- Correct terminal colors
   timeoutlen = 300, -- Faster completion (cannot be lower than 200)
   ttimeoutlen = 0, -- Time to wait for a key code sequence to complete
@@ -1445,7 +1446,7 @@ conf.utils_plugins = {
     },
     history_length = 100,
     storage = "sqlite", -- Available: "sqlite", "shada"
-    storage_path = vim.fn.stdpath("data") .. "~/.custom_db/yanky.db", -- Only for sqlite storage
+    storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db", -- Only for sqlite storage
     sync_with_ring = true, -- sys clipboard
     highlight = {
       on_put = false,
@@ -1810,6 +1811,14 @@ conf.theme_plugins = {
     enable = true,
     keymap = "<leader>r",
     random_startup = true,
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/themes/neofusion.lua
+  northern = {
+    enable = true,
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/themes/neofusion.lua
+  neofusion = {
+    enable = true,
   },
   -- ~/.config/nvim/Gl0riVim/plugins/themes/ariake.lua
   ariake = {

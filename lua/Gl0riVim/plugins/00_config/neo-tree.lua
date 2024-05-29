@@ -112,6 +112,7 @@ neotree.setup({
     },
   },
   filesystem = {
+<<<<<<< HEAD
     commands = {
       -- Override delete to use trash instead of rm
       delete = function(state)
@@ -130,6 +131,77 @@ neotree.setup({
           require("neo-tree.sources.manager").refresh(state.name)
         end)
       end,
+||||||| 8d97850
+    filtered_items = {
+      visible = true, -- when true, they will just be displayed differently than normal items
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_hidden = true, -- only works on Windows for hidden files/directories
+      bind_to_cwd = true,
+      follow_current_file = { enabled = true },
+      use_libuv_file_watcher = true,
+    },
+    -- This will find and focus the file in the active buffer every
+    -- time the current file is changed while the tree is open.
+    follow_current_file = {
+      enabled = true,
+    },
+    group_empty_dirs = false, -- when true, empty folders will be grouped together
+    window = {
+      mappings = {
+        ["<bs>"] = "navigate_up",
+        ["."] = "set_root",
+        ["H"] = "toggle_hidden",
+        ["/"] = "fuzzy_finder",
+        ["D"] = "fuzzy_finder_directory",
+      },
+=======
+    filtered_items = {
+      visible = true, -- when true, they will just be displayed differently than normal items
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_hidden = true, -- only works on Windows for hidden files/directories
+      bind_to_cwd = true,
+      follow_current_file = { enabled = true },
+      use_libuv_file_watcher = true,
+    },
+    -- This will find and focus the file in the active buffer every
+    -- time the current file is changed while the tree is open.
+    follow_current_file = {
+      enabled = true,
+    },
+    group_empty_dirs = false, -- when true, empty folders will be grouped together
+    window = {
+      mappings = {
+        ["<bs>"] = "navigate_up",
+        ["."] = "set_root",
+        ["H"] = "toggle_hidden",
+        ["/"] = "fuzzy_finder",
+        ["D"] = "fuzzy_finder_directory",
+        ["<tab>"] = function(state)
+          state.commands["open"](state)
+          vim.cmd("Neotree reveal")
+        end,
+        -- ["h"] = function(state)
+        --   local node = state.tree:get_node()
+        --   if node.type == "directory" and node:is_expanded() then
+        --     require("neo-tree.sources.filesystem").toggle_directory(state, node)
+        --   else
+        --     require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+        --   end
+        -- end,
+        -- ["l"] = function(state)
+        --   local node = state.tree:get_node()
+        --   if node.type == "directory" then
+        --     if not node:is_expanded() then
+        --       require("neo-tree.sources.filesystem").toggle_directory(state, node)
+        --     elseif node:has_children() then
+        --       require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+        --     end
+        --   end
+        -- end,
+      },
+>>>>>>> 76559487edf3f990e3cc936dd731f58566a9e554
     },
   },
   filtered_items = {
