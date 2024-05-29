@@ -112,31 +112,41 @@ neotree.setup({
     },
   },
   filesystem = {
-    filtered_items = {
-      visible = true, -- when true, they will just be displayed differently than normal items
-      hide_dotfiles = false,
-      hide_gitignored = false,
-      hide_hidden = true, -- only works on Windows for hidden files/directories
-      bind_to_cwd = true,
-      follow_current_file = { enabled = true },
-      use_libuv_file_watcher = true,
-    },
-    -- This will find and focus the file in the active buffer every
-    -- time the current file is changed while the tree is open.
-    follow_current_file = {
-      enabled = true,
-    },
-    group_empty_dirs = false, -- when true, empty folders will be grouped together
-    window = {
-      mappings = {
-        ["<bs>"] = "navigate_up",
-        ["."] = "set_root",
-        ["H"] = "toggle_hidden",
-        ["/"] = "fuzzy_finder",
-        ["D"] = "fuzzy_finder_directory",
-      },
+    commands = {
+      -- Override delete to use trash instead of rm
+      delete = function(state)
+        local inputs = require("neo-tree.ui.inputs")
+        local path = state.tree:get_node().path
+        local msg = "Are you sure you want to delete " .. path
+        inputs.confirm(msg, function(confirmed)
+          if not confirmed then
+            return
+          end
+
+          vim.fn.system({
+            "trash",
+            vim.fn.fnameescape(path),
+          })
+          require("neo-tree.sources.manager").refresh(state.name)
+        end)
+      end,
     },
   },
+  filtered_items = {
+    visible = true, -- when true, they will just be displayed differently than normal items
+    hide_dotfiles = false,
+    hide_gitignored = false,
+    hide_hidden = true, -- only works on Windows for hidden files/directories
+    bind_to_cwd = true,
+    follow_current_file = { enabled = true },
+    use_libuv_file_watcher = true,
+  },
+  -- This will find and focus the file in the active buffer every
+  -- time the current file is changed while the tree is open.
+  follow_current_file = {
+    enabled = true,
+  },
+  group_empty_dirs = false, -- when true, empty folders will be grouped together
 })
 
 -- vim.api.nvim_create_autocmd("VimEnter", {

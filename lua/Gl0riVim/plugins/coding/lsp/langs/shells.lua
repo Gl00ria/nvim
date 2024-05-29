@@ -27,6 +27,7 @@ local function client_check()
         includeAllWorkspaceSymbols = false,
         logLevel = "info",
         shellcheckArguments = "",
+        -- shellcheckArguments = "--severity=error",
         shellcheckPath = vim.env.SHELLCHECK_PATH or "",
       },
     }
@@ -41,6 +42,7 @@ local function client_check()
           includeAllWorkspaceSymbols = false,
           logLevel = "info",
           shellcheckArguments = "",
+          -- shellcheckArguments = "--severity=error",
           shellcheckPath = vim.env.SHELLCHECK_PATH or "shellcheck",
         },
       }
