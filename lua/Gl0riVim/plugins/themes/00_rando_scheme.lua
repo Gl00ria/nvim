@@ -32,6 +32,7 @@ if rando_opts.enable then
         "doom-one",
         "neon",
         "neofusion",
+        "northern",
         -- end of fav
 
         "ariake",
@@ -66,6 +67,7 @@ if rando_opts.enable then
         "doom-one",
         "neon",
         "neofusion",
+        "northern",
         -- end of fav
 
         "ariake",
@@ -93,6 +95,7 @@ if rando_opts.enable then
         "gruvbox-material",
         "onedark_vivid",
         "neofusion",
+        "northern",
         -- end of fav
         "monet",
         "ariake",

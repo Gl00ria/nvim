@@ -1445,7 +1445,7 @@ conf.utils_plugins = {
     },
     history_length = 100,
     storage = "sqlite", -- Available: "sqlite", "shada"
-    storage_path = "~/.custom_db/nvim/plugins/yanky/yanky.db", -- Only for sqlite storage
+    storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db", -- Only for sqlite storage
     sync_with_ring = true, -- sys clipboard
     highlight = {
       on_put = false,
@@ -1810,6 +1810,10 @@ conf.theme_plugins = {
     enable = true,
     keymap = "<leader>r",
     random_startup = true,
+  },
+  -- ~/.config/nvim/Gl0riVim/plugins/themes/neofusion.lua
+  northern = {
+    enable = true,
   },
   -- ~/.config/nvim/Gl0riVim/plugins/themes/neofusion.lua
   neofusion = {
