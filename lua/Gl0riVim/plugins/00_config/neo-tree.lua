@@ -112,7 +112,6 @@ neotree.setup({
     },
   },
   filesystem = {
-<<<<<<< HEAD
     commands = {
       -- Override delete to use trash instead of rm
       delete = function(state)
@@ -131,7 +130,6 @@ neotree.setup({
           require("neo-tree.sources.manager").refresh(state.name)
         end)
       end,
-||||||| 8d97850
     filtered_items = {
       visible = true, -- when true, they will just be displayed differently than normal items
       hide_dotfiles = false,
