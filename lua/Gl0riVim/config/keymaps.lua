@@ -267,4 +267,13 @@ keymap("n", key.t_quicklist, function()
   require("Gl0riVim.config.utils").toggle_quikeylist()
 end, silent)
 
+-- credits: (https://www.reddit.com/r/neovim/comments/1d278fz/comment/l5zimt1/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+vim.keymap.set("n", "<leader>cc", ":normal gcc<CR>", { desc = "Toggle comment line" })
+-- <Esc> - exists visual mode.
+-- :normal executes keystrokes in normal mode.
+-- gv - restores selection.
+-- gc - toggles comment
+-- <CR> sends the command
+vim.keymap.set("v", "<leader>cc", "<Esc>:normal gvgc<CR>", { desc = "Toggle comment block" })
+
 --  ╰───────────────────────────End───────────────────────────╯

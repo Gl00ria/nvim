@@ -437,9 +437,10 @@ conf.coding_plugins = {
   },
   -- comment utility
   -- ~/.config/nvim/Gl0riVim/plugins/coding/comment.lua
-  -- HACK: wait for the bulitin comment (gcc)
+  -- HACK: add comment above & below with nvim(v0.10.0)
+  -- see lua/config/keymaps.lua
   comment = {
-    enable = true,
+    enable = false,
     event = nil,
     keymaps = {
       line_wise = {
