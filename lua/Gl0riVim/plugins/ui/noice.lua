@@ -17,6 +17,14 @@ if noice_opts.enable then
       presets = {
         lsp_doc_border = true,
       },
+      lsp = {
+        hover = {
+          enabled = false,
+        },
+        -- signature = {
+        --   enabled = false,
+        -- },
+      },
     },
     -- opts = {
     --   lsp = {
