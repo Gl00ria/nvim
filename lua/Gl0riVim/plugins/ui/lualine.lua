@@ -68,6 +68,7 @@ if lualine_opts.enable then
           { "branch" },
           { "fancy_diff" },
           { "fancy_diagnostics" },
+          { "require'wttr'.text" },
         },
         lualine_c = {
           -- { "fancy_cwd", substitute_home = true },

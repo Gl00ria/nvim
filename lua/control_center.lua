@@ -1700,6 +1700,11 @@ conf.utils_plugins = {
     watermark_font_family = "Pacifico",
     watermark = "Gl00ria",
   },
+  -- ~/.config/nvim/Gl0riVim/plugins/utils/weather.lua
+  weather = {
+    enable = true,
+    custom_format = "%m+%t+%l",
+  },
 }
 --   ╒═════════════════════════════════════════════════════════╕
 --
