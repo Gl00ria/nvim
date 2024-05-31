@@ -1137,7 +1137,7 @@ conf.editor_plugins = {
   -- = ~/.config/nvim/Gl0riVim/plugins/00_config/neo-tree.lua
   -- = ~/.config/nvim/Gl0riVim/plugins/00_config/nvim-tree.lua
   file_explorer = {
-    strategy = "neo-tree", -- Available: neo-tree, nvim-tree, ranger or none
+    strategy = "nvim-tree", -- Available: neo-tree, nvim-tree, ranger or none
     nvim_tree_opts = {
       keys = {
         { "<leader>e", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = "File Explorer  " },
@@ -1579,7 +1579,7 @@ conf.utils_plugins = {
     cmd = { "MurenToggle", "MurenOpen", "MurenClose", "MurenFresh", "MurenUnique" },
     keys = {
       {
-        "<F5>",
+        "<F6>",
         "<cmd>MurenToggle<cr>",
         desc = "Toggle Multi Replace  ",
       },

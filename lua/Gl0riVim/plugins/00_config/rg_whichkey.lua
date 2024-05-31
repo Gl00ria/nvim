@@ -374,7 +374,7 @@ local whichkey_registered = {
   ["<F16"] = "Pomodoro Menu 󰍜 ",
 
   -- ~/.config/nvim/Gl0riVim/plugins/utils/multi_replace.lua
-  ["<F5>"] = "Toggle Multi Replace  ",
+  ["<F6>"] = "Toggle Multi Replace  ",
 
   -- ~/.config/nvim/Gl0riVim/plugins/editor/nvim_surround.lua
   ["<leader>ds"] = "Delete Surround  ",

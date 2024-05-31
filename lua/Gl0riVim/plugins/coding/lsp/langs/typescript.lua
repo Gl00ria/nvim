@@ -7,8 +7,8 @@ end
 local typescript_opts = settings.langs_control.typescript
 local mason_ts = {}
 local ts_err_trans = {}
-
 local ts_server = {}
+
 if typescript_opts.typescript_type == "tools" then
   ts_server = {
     "pmizio/typescript-tools.nvim",

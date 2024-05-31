@@ -21,9 +21,9 @@ if noice_opts.enable then
         hover = {
           enabled = false,
         },
-        -- signature = {
-        --   enabled = false,
-        -- },
+        signature = {
+          enabled = false,
+        },
       },
     },
     -- opts = {
