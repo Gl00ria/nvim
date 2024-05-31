@@ -1,3 +1,9 @@
+vim.keymap.set("n", "<F5>", function()
+  vim.cmd("!rm %<.class<cr>")
+  vim.cmd("w")
+  vim.cmd("botright split | terminal java " .. vim.fn.expand("%"))
+end, { desc = "Run" })
+
 -- local jdtls = require("jdtls")
 -- local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", ".classpath" }
 -- local root_dir = require("jdtls.setup").find_root(root_markers)
