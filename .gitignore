@@ -1,3 +1,8 @@
-neovide_backtraces.log
-TODO.md
-main
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
