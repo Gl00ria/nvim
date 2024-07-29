@@ -25,10 +25,10 @@ map("n", "<leader>ru", ":%s/<C-r><C-w>/<C-r><C-w>/gcI<Left><Left><Left><Left>", 
 -- stylua: ignore stop
 
 -- lazy plugins manager
-map("n", "<leader>Pd", "<cmd>Lazy<cr>")
-map("n", "<leader>Pe", "<cmd>LazyExtras<cr>")
+map("n", "<leader>Pd", "<cmd>Lazy<cr>", { desc = "Lazy Dashboard" })
+map("n", "<leader>Pe", "<cmd>LazyExtras<cr>", { desc = "Lazy Extras" })
 -- LazyVim Changelog
-map("n", "<leader>PL", function() LazyVim.news.changelog() end)
+map("n", "<leader>PL", function() LazyVim.news.changelog() end, { desc = "Lazy Changelog" })
 
 -- Paste over selection
 keymap("v", "<leader>p", '"_dP', { silent = true })

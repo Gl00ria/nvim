@@ -3,7 +3,7 @@ return {
   -- LazyVim Specs
   --
   require("plugins.editor.neo_tree"),
-  require("plugins.editor.spectre"),
+  require("plugins.editor.grug_far"),
   require("plugins.editor.flash"),
   require("plugins.editor.gitsigns"),
   require("plugins.editor.todo_comments"),

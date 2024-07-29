@@ -4,6 +4,7 @@ return {
   --
   require("plugins.ui.lualine"),
   require("plugins.ui.dashboard"), -- disabled
+  require("plugins.ui.indent_blankline"),
 
   --
   -- Personal Specs
