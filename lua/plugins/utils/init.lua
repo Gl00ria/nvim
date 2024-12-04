@@ -6,6 +6,7 @@ return {
   require("plugins.utils.persistence"), -- disabled
   require("plugins.utils.mini_surround"), -- optional
   require("plugins.utils.yanky"), -- optional
+  require("plugins.utils.render_markdown"),
 
   --
   -- Personal Specs

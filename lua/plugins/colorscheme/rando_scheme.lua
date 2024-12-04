@@ -1,6 +1,5 @@
 return {
   "Gl00ria/rando_scheme",
-  dependencies = { "stevearc/dressing.nvim" },
   opts = {
     keymap = "<leader>rr",
     random_startup = true,

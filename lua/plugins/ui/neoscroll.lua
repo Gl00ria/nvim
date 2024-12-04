@@ -37,7 +37,6 @@ return {
     end
     neoscroll_.setup {
       -- All these keys will be mapped to their corresponding default scrolling animation
-      mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
       hide_cursor = true, -- Hide cursor while scrolling
       stop_eof = true, -- Stop at <EOF> when scrolling downwards
       respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
@@ -46,18 +45,20 @@ return {
       performance_mode = true, -- Disable "Performance Mode" on all buffers.
     }
 
-    local t = {}
-    -- Syntax: t[keys] = {function, {function arguments}}
-    t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } }
-    t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "250" } }
-    t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "450" } }
-    t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "450" } }
-    t["<C-y>"] = { "scroll", { "-0.10", "false", "100" } }
-    t["<C-e>"] = { "scroll", { "0.10", "false", "100" } }
-    t["zt"] = { "zt", { "250" } }
-    t["zz"] = { "zz", { "250" } }
-    t["zb"] = { "zb", { "250" } }
-
-    require("neoscroll.config").set_mappings(t)
+    local keymap = {
+      ["<C-u>"] = function() neoscroll_.ctrl_u { duration = 250 } end,
+      ["<C-d>"] = function() neoscroll_.ctrl_d { duration = 250 } end,
+      ["<C-b>"] = function() neoscroll_.ctrl_b { duration = 450 } end,
+      ["<C-f>"] = function() neoscroll_.ctrl_f { duration = 450 } end,
+      ["<C-y>"] = function() neoscroll_.scroll(-0.1, { move_cursor = false, duration = 100 }) end,
+      ["<C-e>"] = function() neoscroll_.scroll(0.1, { move_cursor = false, duration = 100 }) end,
+      ["zt"] = function() neoscroll_.zt { half_win_duration = 250 } end,
+      ["zz"] = function() neoscroll_.zz { half_win_duration = 250 } end,
+      ["zb"] = function() neoscroll_.zb { half_win_duration = 250 } end,
+    }
+    local modes = { "n", "v", "x" }
+    for key, func in pairs(keymap) do
+      vim.keymap.set(modes, key, func)
+    end
   end,
 }

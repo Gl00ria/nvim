@@ -137,7 +137,6 @@ map("n", "<leader>wm", function() LazyVim.toggle.maximize() end, { desc = "Maxim
 map("n", "<S-tab>", "<cmd>bprevious<cr>", { desc = "PREV Tab 󱠼 " })
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "NEXT Buffer 󰩵 " })
 -- TODO: add me to buffremove ? maybe!!
-map("n", "Q", LazyVim.ui.bufremove, { desc = "Remove Current Buffer  " })
 -- map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 -- map("n", "[b", "<cmd>bprevious<cr>", { desc = "PREV Tab 󱠼 " })
 -- map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer 󰩵 " })
@@ -237,21 +236,21 @@ map("n", "<leader>ub", function() LazyVim.toggle("background", false, {"light", 
 --  ╰───────────────────────────End───────────────────────────╯
 
 -- lazygit
-map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
-map("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "Lazygit (cwd)" })
-map("n", "<leader>gb", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
-map("n", "<leader>gB", LazyVim.lazygit.browse, { desc = "Git Browse" })
+map("n", "<leader>gg", function() Snacks.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
+map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
+-- map("n", "<leader>gb", Snacks.lazygit.blame_line, { desc = "Git Blame Line" })
+map("n", "<leader>gB", Snacks.lazygit.browse, { desc = "Git Browse" })
 
 map("n", "<leader>gf", function()
   local git_path = vim.api.nvim_buf_get_name(0)
-  LazyVim.lazygit({args = { "-f", vim.trim(git_path) }})
+  Snacks.lazygit({args = { "-f", vim.trim(git_path) }})
 end, { desc = "Lazygit Current File History" })
 
 map("n", "<leader>gl", function()
-  LazyVim.lazygit({ args = { "log" }, cwd = LazyVim.root.git() })
+  Snacks.lazygit({ args = { "log" }, cwd = LazyVim.root.git() })
 end, { desc = "Lazygit Log" })
 map("n", "<leader>gL", function()
-  LazyVim.lazygit({ args = { "log" } })
+  Snacks.lazygit({ args = { "log" } })
 end, { desc = "Lazygit Log (cwd)" })
 
 -- quit
