@@ -12,7 +12,6 @@ return {
     end
   end,
   opts = function()
-    -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require("lualine_require")
     lualine_require.require = require
 
@@ -85,13 +84,14 @@ return {
           {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = function() return LazyVim.ui.fg("Constant") end,
+            color = function() return { fg = Snacks.util.color("Constant") } end,
           },
           -- stylua: ignore
           {
             function() return "  " .. require("dap").status() end,
             cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = function() return LazyVim.ui.fg("Debug") end,
+            color = function() return { fg = Snacks.util.color("Debug") } end,
+
           },
           { "selectioncount" },
           -- stylua: ignore

@@ -8,7 +8,7 @@ return {
   -- Personal Specs
   --
   require("plugins.colorscheme.rando_scheme"),
-  require("plugins.colorscheme.northern"),
+  require("plugins.colorscheme.nordern"),
   require("plugins.colorscheme.neofusion"),
   require("plugins.colorscheme.ariake"),
   require("plugins.colorscheme.monet"),

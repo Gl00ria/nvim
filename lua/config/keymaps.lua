@@ -136,12 +136,6 @@ map("n", "<leader>wm", function() LazyVim.toggle.maximize() end, { desc = "Maxim
 -- ╰──────────────────────────────────────────────────────────╯
 map("n", "<S-tab>", "<cmd>bprevious<cr>", { desc = "PREV Tab 󱠼 " })
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "NEXT Buffer 󰩵 " })
--- TODO: add me to buffremove ? maybe!!
--- map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
--- map("n", "[b", "<cmd>bprevious<cr>", { desc = "PREV Tab 󱠼 " })
--- map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer 󰩵 " })
--- map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
--- map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 --
 --  ╰───────────────────────────End────────────────────────────╯
 -- ╭──────────────────────────────────────────────────────────╮
@@ -166,7 +160,7 @@ map("n", "<leader><tab>h", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- │                                                          │
 -- ╰──────────────────────────────────────────────────────────╯
 -- credits: (https://www.reddit.com/r/neovim/comments/1d278fz/comment/l5zimt1/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
--- TODO: code lens keymap!!!
+-- thin won't work in '.lua' files!!!
 vim.keymap.set("n", "<leader>cc", ":normal gcc<CR>", { desc = "Toggle comment line" })
 -- <Esc> - exists visual mode.
 -- :normal executes keystrokes in normal mode.
@@ -182,11 +176,11 @@ map("n", "<leader>ak", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Com
 -- │                     Quickfix/LocList                     │
 -- │                                                          │
 -- ╰──────────────────────────────────────────────────────────╯
--- TODO: when adding trouble
-map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+--  replaced with 'trouble'
+-- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+-- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+-- map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+-- map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 --  ╰───────────────────────────End────────────────────────────╯
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                                                          │

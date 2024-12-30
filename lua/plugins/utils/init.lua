@@ -21,4 +21,5 @@ return {
   -- require("plugins.utils.startuptime"),
   -- require("plugins.utils.dial"),
   require("plugins.utils.tmux_navigatior"),
+  require("plugins.utils.doing"),
 }

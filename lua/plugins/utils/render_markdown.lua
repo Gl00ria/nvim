@@ -26,7 +26,7 @@ return {
     heading = {
       sign = true,
       signs = { "󰫎 " },
-      icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+      icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 ", "󰲭 " },
     },
     callout = {
       note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
@@ -60,7 +60,7 @@ return {
   },
   config = function(_, opts)
     require("render-markdown").setup(opts)
-    Snacks.toggle({
+    Snacks.toggle {
       name = "Render Markdown",
       get = function() return require("render-markdown.state").enabled end,
       set = function(enabled)
@@ -71,7 +71,6 @@ return {
           m.disable()
         end
       end,
-      -- TODO:
-    }):map("<leader>um")
+    }
   end,
 }

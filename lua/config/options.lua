@@ -41,7 +41,6 @@ vim.g.lazyvim_statuscolumn = {
 vim.g.deprecation_warnings = false
 
 -- Show the current document symbols location from Trouble in lualine
--- TODO: after setting up 'trouble'
 vim.g.trouble_lualine = true
 
 local opt = vim.opt
@@ -108,10 +107,10 @@ opt.wrap = false -- Disable line wrap
 -- use "set guifont=*" to see available fonts on your system
 -- opt.guifont = "FiraCode Nerd Font"
 -- opt.guifont = "Iosevka\\ NF:h18"
-opt.guifont = "VictorMono \\Nerd \\Font:h18"
+-- opt.guifont = "VictorMono \\Nerd \\Font:h18"
 -- opt.guifont = "VictorMono\\ Nerd\\ Font:h16"
 -- opt.guifont = "FantasqueSansMono\\ Nerd\\ Font\\ Mono:h18"
--- opt.guifont = "CaskaydiaCove Nerd Font Mono:h16"
+opt.guifont = "CaskaydiaCove Nerd Font Mono:h16"
 -- opt.guifont = "CaskaydiaCove Nerd Font:h16"
 -- opt.guifont = "JetBrainsMono\\ Nerd\\ Font:h16"
 -- opt.guifont = "Hack:h16"

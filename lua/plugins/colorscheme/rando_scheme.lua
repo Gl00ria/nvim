@@ -4,7 +4,7 @@ return {
     keymap = "<leader>rr",
     random_startup = true,
     startup_schemes = {
-      "northern",
+      "nordern",
       "tokyonight",
       "tokyonight-moon",
       "catppuccin-frappe",
