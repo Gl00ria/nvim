@@ -14,4 +14,5 @@ return {
   require("plugins.editor.telescope"),
   require("plugins.editor.smart_tab"),
   require("plugins.editor.legendary"),
+  require("plugins.editor.bufremove"),
 }
