@@ -6,6 +6,7 @@ return {
   require("plugins.ui.dashboard"), -- disabled
   -- require("plugins.ui.indent_blankline"),
   require("plugins.ui.snacks"),
+  require("plugins.ui.noice"),
 
   --
   -- Personal Specs

@@ -8,4 +8,3 @@ collapse_simple_statement = "Always"
 
 [sort_requires]
 enabled = true
-

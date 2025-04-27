@@ -86,51 +86,56 @@ return {
       -- │ Command Line                                             │
       -- ╰──────────────────────────────────────────────────────────╯
       cmp.setup.cmdline("/", {
-        mapping = cmp.mapping.preset.insert {
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<S-TAB>"] = cmp.mapping.select_prev_item(),
+        mapping = {
           ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<TAB>"] = cmp.mapping.select_next_item(),
-          ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
-          ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
-          ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-          ["<C-y>"] = cmp.config.disable,
-          ["<C-e>"] = cmp.mapping {
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-          },
-          -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end, { "c" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, { "c" }),
           ["<CR>"] = cmp.mapping.confirm { select = true },
-          -- ["<CR>"] = cmp.mapping.confirm({
-          --     behavior = cmp.ConfirmBehavior.Replace,
-          --     select = false,
-          -- }),
         },
-        sources = { { name = "buffer" } },
+        sources = {
+          { name = "buffer" },
+        },
       }),
-      -- cmp.setup.cmdline(":", {
-      --   mapping = cmp.mapping.preset.insert {
-      --     ["<C-k>"] = cmp.mapping.select_prev_item(),
-      --     ["<S-TAB>"] = cmp.mapping.select_prev_item(),
-      --     ["<C-j>"] = cmp.mapping.select_next_item(),
-      --     ["<TAB>"] = cmp.mapping.select_next_item(),
-      --     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
-      --     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
-      --     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      --     ["<C-y>"] = cmp.config.disable,
-      --     ["<C-e>"] = cmp.mapping {
-      --       i = cmp.mapping.abort(),
-      --       c = cmp.mapping.close(),
-      --     },
-      --     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      --     ["<CR>"] = cmp.mapping.confirm { select = true },
-      --     -- ["<CR>"] = cmp.mapping.confirm({
-      --     --     behavior = cmp.ConfirmBehavior.Replace,
-      --     --     select = false,
-      --     -- }),
-      --   },
-      --   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
-      -- }),
+      -- https://github.com/hrsh7th/cmp-cmdline/issues/96#issuecomment-1705873476
+      cmp.setup.cmdline(":", {
+        mapping = {
+          ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end, { "c" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, { "c" }),
+          ["<CR>"] = cmp.mapping.confirm { select = true },
+        },
+        completion = { completeopt = "menu,menuone,noselect" },
+        sources = cmp.config.sources(
+          { { name = "path" } },
+          { { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } } }
+        ),
+      }),
     }
   end,
   main = "lazyvim.util.cmp",

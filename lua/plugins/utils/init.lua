@@ -6,7 +6,8 @@ return {
   require("plugins.utils.persistence"), -- disabled
   require("plugins.utils.mini_surround"), -- optional
   require("plugins.utils.yanky"), -- optional
-  require("plugins.utils.render_markdown"),
+  require("plugins.utils.markdown_render"),
+  require("plugins.utils.markdown_preview"),
 
   --
   -- Personal Specs
@@ -21,4 +22,5 @@ return {
   -- require("plugins.utils.startuptime"),
   -- require("plugins.utils.dial"),
   require("plugins.utils.tmux_navigatior"),
+  require("plugins.utils.session_management"),
 }
