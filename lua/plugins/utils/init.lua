@@ -23,4 +23,5 @@ return {
   -- require("plugins.utils.dial"),
   require("plugins.utils.tmux_navigatior"),
   require("plugins.utils.session_management"),
+  require("plugins.utils.image"),
 }
