@@ -1,28 +1,13 @@
--- This file is automatically loaded by plugins.core
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- LazyVim auto format
 vim.g.autoformat = true
 
--- LazyVim picker to use.
--- Can be one of: telescope, fzf
--- Leave it to "auto" to automatically use the picker
--- enabled with `:LazyExtras`
-vim.g.lazyvim_picker = "auto"
-
--- LazyVim root dir detection
--- Each entry can be:
--- * the name of a detector function like `lsp` or `cwd`
--- * a pattern or array of patterns like `.git` or `lua`.
--- * a function with signature `function(buf) -> string|string[]`
-vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
-
 -- LazyVim automatically configures lazygit:
---  * theme, based on the active colorscheme.
---  * editorPreset to nvim-remote
---  * enables nerd font icons
--- Set to false to disable.
 vim.g.lazygit_config = true
 
 -- Options for the LazyVim statuscolumn
@@ -31,23 +16,9 @@ vim.g.lazyvim_statuscolumn = {
   folds_githl = true, -- highlight fold sign with git sign color
 }
 
--- Optionally setup the terminal to use
--- This sets `vim.o.shell` and does some additional configuration for:
--- * pwsh
--- * powershell
--- LazyVim.terminal.setup("pwsh")
-
--- Hide deprecation warnings
-vim.g.deprecation_warnings = false
-
--- Show the current document symbols location from Trouble in lualine
-vim.g.trouble_lualine = true
-
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
--- only set clipboard if not in ssh, to make sure the OSC 52
--- integration works automatically. Requires Neovim >= 0.10.0
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
@@ -82,7 +53,7 @@ opt.sidescrolloff = 10 -- Columns of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 4 -- Size of an indent
-opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
@@ -121,16 +92,3 @@ opt.guifont = "CaskaydiaCove Nerd Font Mono:h16"
 -- opt.guifont = "DejaVu Sans Mono:h18"
 -- opt.guifont = "Vazir Code Hack:h18"
 -- opt.guifont = "Kawkab Mono:h18"
-
-if vim.fn.has("nvim-0.10") == 1 then
-  opt.smoothscroll = true
-  opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
-  opt.foldmethod = "expr"
-  opt.foldtext = ""
-else
-  opt.foldmethod = "indent"
-  opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
-end
-
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
