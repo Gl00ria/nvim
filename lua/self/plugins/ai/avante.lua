@@ -1,4 +1,8 @@
+-- HACK:
+-- - test later its too slow compare to CodeCompanion.nvim & over loads the CPU & GPU
+-- - see (https://github.com/yetone/avante.nvim/issues/1904) for multi model
 return {
+  enabled = false,
   "yetone/avante.nvim",
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- ⚠️ must add this setting! ! !
@@ -12,42 +16,18 @@ return {
     -- add any opts here
     -- this file can contain specific instructions for your project
     instructions_file = "avante.md",
-    provider = "qwen_vllm",
+    provider = "ollama",
     providers = {
-      qwen_vllm = {
-        __inherited_from = "openai", -- <- important (note spelling!)
-        api_key_name = "",
-        endpoint = "http://localhost:8000/v1", -- vLLM base URL
-        model = "/models/Qwen2-1.5B-Instruct-GPTQ-Int4",
-        disable_tools = true, -- disable tools!
-        -- extra_request_body = {
-        --   temperature = 0,
-        --   max_tokens = 4096,
-        -- },
+      ollama = {
+        endpoint = "http://localhost:11434",
+        model = "qwen3:8b",
+        max_tokens = 512, -- reduce token limit for responses
+        context_size = 2048, -- only keep this many tokens of history
+        streaming = false, -- disable streaming
+        temperature = 0.7, -- maybe lower or adjust
+        -- disable_tools = true,
       },
     },
-    -- for example
-    -- provider = "claude",
-    -- providers = {
-    --   claude = {
-    --     endpoint = "https://api.anthropic.com",
-    --     model = "claude-sonnet-4-20250514",
-    --     timeout = 30000, -- Timeout in milliseconds
-    --     extra_request_body = {
-    --       temperature = 0.75,
-    --       max_tokens = 20480,
-    --     },
-    --   },
-    -- moonshot = {
-    --   endpoint = "https://api.moonshot.ai/v1",
-    --   model = "kimi-k2-0711-preview",
-    --   timeout = 30000, -- Timeout in milliseconds
-    --   extra_request_body = {
-    --     temperature = 0.75,
-    --     max_tokens = 32768,
-    --   },
-    -- },
-    -- },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
