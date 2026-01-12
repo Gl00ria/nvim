@@ -1,5 +1,5 @@
 return {
   event = "VeryLazy",
-  "hiphish/rainbow-delimiters.nvim",
+  "HiPhish/rainbow-delimiters.nvim",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
 }

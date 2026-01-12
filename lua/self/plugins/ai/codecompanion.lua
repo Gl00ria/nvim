@@ -32,7 +32,20 @@ return {
       ollama = function()
         return require("codecompanion.adapters").extend("ollama", {
           schema = {
-            model = { default = "qwen3:8b" },
+            -- model = { default = "mistral:7b" }, -- tools
+            -- model = { default = "llama3.1:8b" }, --  tools
+            -- model = { default = "llama3.2:3b" }, --  tools
+            -- model = { default = "phi3:3.8b" }, --  code
+            -- model = { default = "qwen2.5-coder:7b" }, -- code
+            -- model = { default = "codellama:7b" }, --  code
+            -- model = { default = "granite3.1-moe:3b" }, --  tools | code
+            -- model = { default = "granite3.3:8b" }, --  tools | code
+            -- model = { default = "granite-code:8b" },-- TODO:  code
+            -- model = { default = "codegemma:7b" },-- TODO:  code
+            -- model = { default = "deepseek-coder:6.7b" },-- TODO:  code
+            -- model = { default = "qwen3:8b" }, --  tools | thinking | code
+            -- model = { default = "gpt-oss:20b" }, -- tools | thinking
+            -- model = { default = "deepseek-r1:8b" }, -- tools | thinking
             env = {
               url = "http://localhost:11434",
             },

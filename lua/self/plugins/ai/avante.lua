@@ -20,7 +20,7 @@ return {
     providers = {
       ollama = {
         endpoint = "http://localhost:11434",
-        model = "qwen3:8b",
+        model = "granite3.1-moe:3b",
         max_tokens = 512, -- reduce token limit for responses
         context_size = 2048, -- only keep this many tokens of history
         streaming = false, -- disable streaming
