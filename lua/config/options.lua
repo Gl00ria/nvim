@@ -93,3 +93,5 @@ opt.guifont = "CaskaydiaCove Nerd Font Mono:h16"
 -- opt.guifont = "DejaVu Sans Mono:h18"
 -- opt.guifont = "Vazir Code Hack:h18"
 -- opt.guifont = "Kawkab Mono:h18"
+
+-- vim.g.lazyvim_php_lsp = "intelephense"
