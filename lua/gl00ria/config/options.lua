@@ -97,6 +97,7 @@ vim.o.confirm = true
 
 vim.o.winborder = 'rounded'
 
+vim.o.spell = true
 vim.o.spelllang = 'en'
 vim.o.spelloptions = 'noplainbuffer'
 
