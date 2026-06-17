@@ -1,8 +1,8 @@
-tt.*
-.tests
-doc/tags
-debug
-.repro
-foo.*
-*.log
-data
+tags
+test.sh
+.luarc.json
+nvim
+
+spell/
+
+.DS_Store

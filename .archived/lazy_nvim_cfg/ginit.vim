@@ -33,4 +33,3 @@ snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 nmap <leader>ke :set norightleft <cr>
 nmap <leader>ka :set rightleft <cr>
 
-
