@@ -156,6 +156,7 @@ vim.keymap.set('n', '[w', diagnostic_goto(false, 'WARN'), { desc = 'PREV Warning
 -- vim.keymap.set('n', ']h', diagnostic_goto(true, 'HINT'), { desc = 'NEXT Hint  ' })
 -- vim.keymap.set('n', '[h', diagnostic_goto(false, 'HINT'), { desc = 'PREV Hint  ' })
 
+-- this will override the above
 local function get_highest_severity(count)
   local severity_order = {
     vim.diagnostic.severity.ERROR,
@@ -171,11 +172,11 @@ local function get_highest_severity(count)
 
   return nil
 end
--- vim.keymap.set('n', ']d', function() vim.diagnostic.jump { count = vim.v.count1, severity = get_highest_severity() } end, {
---   desc = 'Jump to the next diagnostic (prioritized)',
--- })
---
--- vim.keymap.set('n', '[d', function() vim.diagnostic.jump { count = vim.v.count1, severity = get_highest_severity() } end, {
---   desc = 'Jump to the previous diagnostic (prioritized)',
--- })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump { count = vim.v.count1, severity = get_highest_severity() } end, {
+  desc = 'Jump to the next diagnostic (prioritized)',
+})
+
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump { count = vim.v.count1, severity = get_highest_severity() } end, {
+  desc = 'Jump to the previous diagnostic (prioritized)',
+})
 --  ╰───────────────────────────End────────────────────────────╯
