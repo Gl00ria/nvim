@@ -2,7 +2,7 @@ tags
 test.sh
 .luarc.json
 nvim
-./omo
+.omo/*
 
 spell/
 
