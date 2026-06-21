@@ -6,8 +6,10 @@ vim.pack.add {
   },
 }
 
-local ok, neo = pcall(require, 'neo-tree')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_ui_enter(function()
+  local ok, neo = pcall(require, 'neo-tree')
+  if ok then
   neo.setup {
     close_if_last_window = true,
     sources = { 'filesystem', 'buffers', 'git_status' },
@@ -66,6 +68,7 @@ if ok then
       end
     end,
   })
-else
-  vim.notify('Failed to load plugin [NeoTree@neo-tree.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [NeoTree@neo-tree.lua]', vim.log.levels.ERROR)
+  end
+end, 'neo_tree')

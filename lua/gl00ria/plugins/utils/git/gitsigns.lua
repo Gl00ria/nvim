@@ -1,6 +1,8 @@
 -- See `:help gitsigns` to understand what each configuration key does.
 -- Adds git related signs to the gutter, as well as utilities for managing changes
 vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
 local ok, gitsigns = pcall(require, 'gitsigns')
 if ok then
   gitsigns.setup {
@@ -69,6 +71,7 @@ if ok then
       -- map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
     end,
   }
-else
-  vim.notify('Failed to load plugin [gitsigns@gitsigns.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [gitsigns@gitsigns.lua]', vim.log.levels.ERROR)
+  end
+end, 'gitsigns')

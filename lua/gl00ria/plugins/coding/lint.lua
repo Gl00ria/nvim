@@ -2,8 +2,10 @@
 
 vim.pack.add { 'https://github.com/mfussenegger/nvim-lint' }
 
-local ok, lint = pcall(require, 'lint')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, lint = pcall(require, 'lint')
+  if ok then
   require('lint').linters_by_ft = {
     -- markdown = { 'markdownlint' }, -- Make sure to install `markdownlint` via mason / npm
     markdown = { 'markdownlint-cli2' },
@@ -31,6 +33,7 @@ if ok then
       if vim.bo.modifiable then lint.try_lint() end
     end,
   })
-else
-  vim.notify('Failed to load plugin [nvim-lint@lint.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [nvim-lint@lint.lua]', vim.log.levels.ERROR)
+  end
+end, 'lint')

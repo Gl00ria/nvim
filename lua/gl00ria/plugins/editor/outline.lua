@@ -1,5 +1,7 @@
 vim.pack.add { 'https://github.com/hedyhli/outline.nvim' }
-local ok, outline = pcall(require, 'outline')
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, outline = pcall(require, 'outline')
 if ok then
   outline.setup {}
 
@@ -11,6 +13,7 @@ if ok then
   else
     vim.notify('Failed to load plugin [Which-key@yazi.lua]', vim.log.levels.ERROR)
   end
-else
-  vim.notify('Failed to load plugin [outline@outline.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [outline@outline.lua]', vim.log.levels.ERROR)
+  end
+end, 'outline')

@@ -3,7 +3,9 @@ vim.pack.add {
   'https://github.com/MeanderingProgrammer/render-markdown.nvim',
 }
 
-local ok, render_md = pcall(require, 'render-markdown')
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('FileType', function()
+  local ok, render_md = pcall(require, 'render-markdown')
 if ok then
   render_md.setup {
     anti_conceal = { enabled = true },
@@ -224,6 +226,7 @@ if ok then
       },
     },
   }
-else
-  vim.notify('Failed to load plugin [render-markdown@render-markdown.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [render-markdown@render-markdown.lua]', vim.log.levels.ERROR)
+  end
+end, 'render_md', { pattern = 'markdown' })

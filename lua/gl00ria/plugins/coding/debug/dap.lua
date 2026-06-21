@@ -14,6 +14,8 @@ vim.pack.add {
   'https://github.com/jay-babu/mason-nvim-dap.nvim',
 }
 
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
 local main_dap = require 'dap'
 
 local mason_ok, mason_dap = pcall(require, 'mason-nvim-dap')
@@ -87,9 +89,10 @@ if ui_ok then
   -- vim.keymap.set('n', '<leader>B', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { desc = 'Debug: Set Breakpoint' })
   -- -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
   -- vim.keymap.set('n', '<F7>', function() require('dapui').toggle() end, { desc = 'Debug: See last session result.' })
-else
-  vim.notify('Failed to load plugin [nvim-dap-ui@debug/main.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [nvim-dap-ui@debug/main.lua]', vim.log.levels.ERROR)
+  end
+end, 'dap')
 
 -- Change breakpoint icons
 -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })

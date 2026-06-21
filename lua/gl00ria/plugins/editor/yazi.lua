@@ -1,7 +1,9 @@
 vim.pack.add { 'https://github.com/mikavilpas/yazi.nvim' }
 
-local ok, yazi = pcall(require, 'yazi')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, yazi = pcall(require, 'yazi')
+  if ok then
   yazi.setup {
     keymaps = {
       show_help = '<f1>',
@@ -31,6 +33,7 @@ if ok then
   else
     vim.notify('Failed to load plugin [Which-key@yazi.lua]', vim.log.levels.ERROR)
   end
-else
-  vim.notify('Failed to load plugin [Yazi@Yazi.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [Yazi@Yazi.lua]', vim.log.levels.ERROR)
+  end
+end, 'yazi')

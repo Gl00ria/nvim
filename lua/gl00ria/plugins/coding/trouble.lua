@@ -1,7 +1,9 @@
 vim.pack.add { 'https://github.com/folke/trouble.nvim' }
 
-local ok, trouble = pcall(require, 'trouble')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, trouble = pcall(require, 'trouble')
+  if ok then
   trouble.setup {
     defaults = {
       keys = {
@@ -104,6 +106,7 @@ if ok then
   else
     vim.notify('Failed to load plugin [Which-key@trouble.lua]', vim.log.levels.ERROR)
   end
-else
-  vim.notify('Failed to load plugin [Trouble@trouble.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [Trouble@trouble.lua]', vim.log.levels.ERROR)
+  end
+end, 'trouble')

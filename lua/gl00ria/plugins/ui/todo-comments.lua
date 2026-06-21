@@ -8,8 +8,10 @@ vim.pack.add {
   -- 'https://github.com/nvim-telescope/telescope.nvim',
 }
 
-local ok, todo_comments = pcall(require, 'todo-comments')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, todo_comments = pcall(require, 'todo-comments')
+  if ok then
   todo_comments.setup {
     {
       signs = true, -- show icons in the signs column
@@ -104,6 +106,7 @@ if ok then
 --     -- stylua: ignore end
 --   },
 -- }
-else
-  vim.notify('Failed to load plugin [todo-comments@todo-comments.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [todo-comments@todo-comments.lua]', vim.log.levels.ERROR)
+  end
+end, 'todo_comments')

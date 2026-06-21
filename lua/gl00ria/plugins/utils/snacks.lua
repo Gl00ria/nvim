@@ -1,7 +1,9 @@
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
-local ok, Snacks = pcall(require, 'snacks')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, Snacks = pcall(require, 'snacks')
+  if ok then
   Snacks.setup {
     dashboard = { enabled = false },
 
@@ -271,3 +273,4 @@ if ok then
 else
   vim.notify('Failed to load plugin [snacks@snacks.lua]', vim.log.levels.ERROR)
 end
+end, 'snacks')

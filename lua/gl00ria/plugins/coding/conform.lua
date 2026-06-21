@@ -1,7 +1,9 @@
 -- [[ Formatting ]]
 vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
-local ok, conform = pcall(require, 'conform')
-if ok then
+local lazy = require 'gl00ria.config.lazy'
+lazy.on_event('BufReadPost', function()
+  local ok, conform = pcall(require, 'conform')
+  if ok then
   conform.setup {
     notify_on_error = true,
     format_on_save = {
@@ -81,6 +83,7 @@ if ok then
 
   -- TODO: remap 'which-key'
   vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
-else
-  vim.notify('Failed to load plugin [Conform@conform.lua]', vim.log.levels.ERROR)
-end
+  else
+    vim.notify('Failed to load plugin [Conform@conform.lua]', vim.log.levels.ERROR)
+  end
+end, 'conform')
