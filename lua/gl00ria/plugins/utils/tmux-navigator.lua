@@ -27,3 +27,5 @@ lazy.on_event('BufReadPost', function()
     vim.notify('Failed to load plugin [tmux@tmux-navigator.lua]', vim.log.levels.ERROR)
   end
 end, 'tmux_navigator')
+-- vim.pack.add { 'https://github.com/christoomey/vim-tmux-navigator' }
+-- vim.g.tmux_navigator_no_mappings = 1
