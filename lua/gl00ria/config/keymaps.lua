@@ -31,7 +31,6 @@ vim.keymap.set('n', '<C-q>', '<cmd>qall<cr>', { desc = 'Save + Quit Neovim', sil
 vim.keymap.set('n', '+', '<c-s-a>', { desc = 'Increment number under cursor', noremap = true })
 vim.keymap.set('n', '-', '<c-s-x>', { desc = 'Decrement number under cursor', noremap = true })
 
--- TODO: remap 'which-key' --> not worky worky!! conflict? was working
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]], { desc = 'Replace word under cursor [All Buffer]' })
 
 --  ╰───────────────────────────End───────────────────────────╯
@@ -45,8 +44,8 @@ vim.keymap.set({ 'n', 'v' }, 'H', '^', { desc = 'Move to the beginning of the li
 vim.keymap.set({ 'n', 'v' }, 'L', '$', { desc = 'Move to the end of the line' })
 
 -- Paste over selection
--- vim.keymap.set('v', '<leader>p', '"_dP', { silent = true })
-vim.keymap.set('v', 'p', '"_dP', { silent = true })
+vim.keymap.set('v', '<leader>p', '"_dP', { silent = true })
+-- vim.keymap.set('v', 'p', '"_dP', { silent = true })
 vim.keymap.set('n', '<C-p>', 'viw"_dP', { desc = 'Paste over word without yanking' })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { silent = true }) -- paste in insert mode
 

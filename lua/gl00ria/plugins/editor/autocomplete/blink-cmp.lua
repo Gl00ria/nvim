@@ -6,6 +6,7 @@ vim.pack.add {
   -- sources
   --
   { src = 'https://github.com/folke/lazydev.nvim' },
+  { src = 'https://github.com/Kaiser-Yang/blink-cmp-avante' },
 
   { src = 'https://github.com/alexandre-abrioux/blink-cmp-npm.nvim' },
 
@@ -49,6 +50,7 @@ lazy.on_event('InsertEnter', function()
           'env',
           'lazydev',
           'npm',
+          'avante',
           -- 'ripgrep',
           -- 'dictionary',
           -- 'conventional_commits',
@@ -61,6 +63,14 @@ lazy.on_event('InsertEnter', function()
 
           -- Sql
           dadbod = { name = ' ', module = 'vim_dadbod_completion.blink' },
+
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {
+              -- options for blink-cmp-avante
+            },
+          },
 
           -- ripgrep = {
           --   module = 'blink-ripgrep',
