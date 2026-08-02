@@ -51,7 +51,7 @@
                 | It's better to be prepared for the opportunity and not have one, than have an          | Les Brown                |
                 | opportunity and not be prepared.                                                       |                          |
                 |----------------------------------------------------------------------------------------+--------------------------|
-                | When you TALK, you're only repeating what you already know. But if you LISTEN,         | Dalai Llama               |
+                | When you TALK, you're only repeating what you already know. But if you LISTEN,         | Dalai Llama              |
                 | you will learn something new.                                                          |                          |
                 |----------------------------------------------------------------------------------------+--------------------------|
                 | Don't work 8 hours a day for someone else's company then go to work on your own goals. | The Rock                 |
@@ -101,6 +101,8 @@
                 | A language that doesn't affect the way you think about programming, is not worth knowing.                     | Alan J. Perlis |
                 |---------------------------------------------------------------------------------------------------------------+----------------|
                 | Every program has (at least) two purposes: the one for which it was written, and another for which it wasn't. | Alan J. Perlis |
+                |---------------------------------------------------------------------------------------------------------------+----------------|
+                | Any Software Engineer that doesn't intrinsically understand AI, will soon be unemployable.                    | Justin Angel   |
                 |---------------------------------------------------------------------------------------------------------------+----------------|
 
 
