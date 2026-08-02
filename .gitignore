@@ -2,6 +2,10 @@ tags
 test.sh
 .luarc.json
 nvim
+
+# AI stuff
+AGENTS.md
+.opencode/*
 .omo/*
 
 spell/

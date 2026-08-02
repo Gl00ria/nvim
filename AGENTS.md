@@ -1,79 +1,84 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-06-21 16:36:17
-**Commit:** cd790b6
+**Updated:** 2026-07-06
 **Branch:** main
 
 ## OVERVIEW
-Personal Neovim PDE config using `vim.pack` (not lazy.nvim). Lua-first, 82 active files, ~4.4k LOC. Plugin manager is `vim.pack.add` + recursive directory scanner in `lua/plugins.lua`.
+Personal Neovim PDE config. Lua-first, 83 active `.lua` files, ~4.4k LOC. Uses `vim.pack` (Neovim's built-in packer, since 0.10) — no third-party plugin managers.
+
+`lua/pack.lua` is a **post-install hook** (not a plugin) that runs build commands after `PackChanged` events for telescope-fzf-native, LuaSnip, and nvim-treesitter.
 
 ## STRUCTURE
 ```
 nvim/
-├── init.lua                 # Entry: vim._core.ui2 → config → pack → plugins
+├── init.lua                 # Entry: ui2 → options → keymaps → pack setup → autocmd → plugins
 ├── lua/
-│   ├── plugins.lua          # Recursive plugin loader (scans 6 subdirs)
+│   ├── pack.lua             # Post-install hooks (PackChanged autocmd)
+│   ├── plugins.lua          # Recursive scanner: 6 category dirs → auto-requires each .lua file
 │   └── gl00ria/
-│       ├── config/          # Core: options, keymaps, autocmds, icons, neovide
-│       └── plugins/         # Plugin configs organized by category
-│           ├── 1st_load/    # Must-load-first (treesitter, which-key, plenary, etc.)
-│           ├── ai/          # opencode.lua
-│           ├── coding/      # LSP, treesitter, DAP, formatters, linters
+│       ├── config/          # options, keymaps, autocmds, icons, neovide, lazy-load helper
+│       └── plugins/         # Plugin configs organized by category (auto-loaded)
+│           ├── 1st_load/    # Must load before others (alphabetical-loading workaround)
+│           ├── ai/          # opencode, avante
+│           ├── coding/      # LSP, treesitter, DAP, conform, lint, trouble
 │           ├── editor/      # blink-cmp, lualine, neo-tree, barbar, flash, yazi
 │           ├── ui/          # themes, alpha, todo-comments, diagnostics
-│           └── utils/       # snacks, render-markdown, tmux, mini.*, git
-├── .stylua.toml             # StyLua formatter config
-├── .neoconf.json            # LSP/neodev config
+│           └── utils/       # snacks, tmux, mini-*, git plugins
+├── .stylua.toml             # StyLua: column=160, indent=2, spaces, AutoPreferSingle
+├── .neoconf.json            # neodev/Lua LS library routing
 ├── ginit.vim                # Neovide GUI init
 ├── nvim-pack-lock.json      # vim.pack lockfile
-└── .archived/               # Old lazy.nvim config (not active)
+└── .archived/               # Old lazy.nvim config (read-only history)
 ```
 
 ## WHERE TO LOOK
-| Task | Location | Notes |
-|------|----------|-------|
-| Add/change option | `lua/gl00ria/config/options.lua` | vim.o, vim.opt, vim.g setters |
-| Add keymap | `lua/gl00ria/config/keymaps.lua` | 182 lines, grouped by sections |
-| Add autocmd | `lua/gl00ria/config/autocmd.lua` | Organized by augroup |
-| Configure LSP for new language | `lua/gl00ria/plugins/coding/lsp/langs/` | One file per language |
-| Add new plugin | New file in appropriate `plugins/*/` subdir | Auto-loaded via scanner |
-| Add formatter/linter | `lua/gl00ria/plugins/coding/conform.lua` or `lint.lua` | |
-| Change statusline | `lua/gl00ria/plugins/editor/lualine.lua` | |
-| Change autocomplete | `lua/gl00ria/plugins/editor/autocomplete/blink-cmp.lua` | |
-| Treesitter parsers | `lua/gl00ria/plugins/1st_load/treesitter.lua` | List of parsers + auto-attach |
+| Task | Location |
+|------|----------|
+| Add/modify option | `lua/gl00ria/config/options.lua` |
+| Add keymap | `lua/gl00ria/config/keymaps.lua` |
+| Add autocmd | `lua/gl00ria/config/autocmd.lua` |
+| Lazy-load a plugin | `lua/gl00ria/config/lazy.lua` |
+| Configure LSP for a language | `lua/gl00ria/plugins/coding/lsp/langs/<lang>.lua` |
+| Add new plugin | New `.lua` file in appropriate `plugins/*/` subdir |
+| Add formatter | `lua/gl00ria/plugins/coding/conform.lua` |
+| Add linter | `lua/gl00ria/plugins/coding/lint.lua` |
 
 ## CONVENTIONS
-- **Plugin manager**: `vim.pack.add { { src = 'https://github.com/...', version = ... } }` at top of each plugin file
-- **Guard pattern**: `local ok, mod = pcall(require, 'mod')` then `if ok then mod.setup { ... } else vim.notify(...) end`
-- **StyLua**: column_width=160, indent_width=2, spaces, single quotes, no call parens where possible
-- **Keymap descriptions**: Always include `{ desc = '...' }` on non-trivial maps
-- **Loader**: Recursive `vim.fs.dir` scanner in `plugins.lua` — plugin files are auto-required by path; each plugin file stands alone
-- **LSP keymaps**: Defined in `lspconfig.lua` inside `LspAttach` autocmd, prefixed with `LSP: ` in desc
+- **Plugin spec**: `vim.pack.add { { src = 'https://github.com/...', version = ... } }` at top of each plugin file
+- **Guard pattern**: `local ok, mod = pcall(require, 'mod'); if ok then mod.setup { ... } end`
+- **Lazy-load**: `require 'gl00ria.config.lazy'` → `lazy.on_ui_enter(fn, 'id')` or `lazy.on_event(event, fn, 'id')`
+- **Keymaps**: `vim.keymap.set` only. Always `{ desc = '...' }`. `'n'` mode unless multi-mode
+- **Autocmds**: Named augroup with `{ clear = true }`. Each in `autocmd.lua`
+- **Modeline**: `vim: ts=2 sts=2 sw=2 et` at end of config files
+- **LSP keymaps**: Defined in `lspconfig.lua` inside `LspAttach` callback, desc prefixed with `'LSP: '`
 
-## ANTI-PATTERNS (THIS PROJECT)
-- DO NOT use lazy.nvim or packer — this uses `vim.pack` exclusively
-- DO NOT add to `.archived/` — that directory is read-only history
-- DO NOT use `vim.api.nvim_set_keymap` — use `vim.keymap.set` instead
-- DO NOT add global plugin specs files — each plugin gets its own file in the appropriate subdir
-- AVOID `vim.cmd` where Lua API exists (`vim.opt` over `:set`, `vim.keymap.set` over `:map`)
+## ANTI-PATTERNS
+- DO NOT use `vim.api.nvim_set_keymap` — use `vim.keymap.set`
+- DO NOT use `:set` — use `vim.o` / `vim.opt`
+- DO NOT add plugin specs in global files — each plugin gets its own file
+- DO NOT add to `.archived/` — read-only history
+- DO NOT use `on_attach` in LSP lang configs — use the global `LspAttach` in `lspconfig.lua`
+- DO NOT put language-specific keymaps in `langs/` files — shared keymaps go in `lspconfig.lua`
+- AVOID `vim.cmd` where Lua API exists
 
 ## UNIQUE STYLES
-- `1st_load/` dir pattern — plugins that must load before others (solves vim.pack's alphabetical loading issue)
-- `vim._core.ui2` experimental UI — enabled in init.lua for cmdline/dialog enhancements
-- 22 per-language LSP config files in `coding/lsp/langs/` — one per supported language
-- `cmdheight=0` with autocmd to set `cmdheight=1` on CmdlineEnter — minimal UI
+- `1st_load/` dir — forces plugins to load before alphabetically-sorted ones (solves dependency ordering with vim.pack)
+- `vim._core.ui2` experimental UI — enabled in init.lua (doesn't play well with noice.nvim)
+- `cmdheight=0` with CmdlineEnter/Leave autocmd toggling it to 1 — minimal UI, restored via `redrawstatus()`
 - `.neoconf.json` for neodev/Lua LS library routing
+- 22 per-language LSP configs in `coding/lsp/langs/` — use `vim.lsp.config()` + `vim.lsp.enable()`, not `lspconfig.setup()`
 
 ## COMMANDS
 ```bash
-# No build/CI — this is a config repo
 # Validate Lua syntax:
 find . -name '*.lua' -not -path '*/.archived/*' -exec luac -p {} \;
 # Format with StyLua:
 stylua lua/
+# Update plugins:
+:lua vim.pack.update()
 ```
 
 ## NOTES
-- `vim.pack` is Neovim's built-in packer (see `:help vim.pack`) — not a third-party plugin manager
-- The `.archived/` directory holds the previous lazy.nvim config for reference
-- Plugin load order: 1st_load → ai → coding → editor → ui → utils (defined in `plugins.lua`)
+- Plugin load order is deterministic: `1st_load` → `ai` → `coding` → `editor` → `ui` → `utils` (defined in `plugins.lua`)
+- `vim.pack` is Neovim's built-in packer — see `:help vim.pack`
+- Sub-directories have their own `AGENTS.md` with deeper conventions: `lua/gl00ria/config/AGENTS.md`, `lua/gl00ria/plugins/coding/lsp/AGENTS.md`
