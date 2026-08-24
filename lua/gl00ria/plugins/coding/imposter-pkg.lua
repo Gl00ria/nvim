@@ -1,0 +1,11 @@
+-- Flags malicious, typosquatted, or risky npm/yarn/pnpm packages in
+-- vim.pack.add { 'https://github.com/johnkingkong/impostor-pkg.nvim' }
+-- local lazy = require 'gl00ria.config.lazy'
+-- lazy.on_event('BufReadPost', function()
+--   local ok, imposter_pkg = pcall(require, 'impostor-pkg')
+--   if ok then
+--     imposter_pkg.setup {}
+--   else
+--     vim.notify('Failed to load plugin [impostor-pkg@impostor-pkg.lua]', vim.log.levels.ERROR)
+--   end
+-- end, 'imposter_pkg')
