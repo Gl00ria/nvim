@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "Extensions.Nvim": {
+      "rev": "3c8bbd7e8d8c57a0921503843940fed1a4fe5e67",
+      "src": "https://github.com/DevDanielAlvarez/Extensions.Nvim"
+    },
     "LuaSnip": {
       "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
       "src": "https://github.com/L3MON4D3/LuaSnip",
@@ -129,6 +133,10 @@
     "gitsigns.nvim": {
       "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "graf.nvim": {
+      "rev": "effba9e580c80e5333c8f06e569093a4142f67ad",
+      "src": "https://github.com/YedTheEmo/graf.nvim"
     },
     "grug-far.nvim": {
       "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
