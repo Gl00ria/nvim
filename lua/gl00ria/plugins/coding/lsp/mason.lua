@@ -47,15 +47,16 @@ local ensure_installed = {
 
   'markdownlint-cli2',
   'markdown-toc',
+  -- 'harper-ls',
 
   -- go
-  'goimports',
-  'gofumpt',
-  'gomodifytags',
-  'impl',
-  'golangci-lint',
-  'delve',
-  'gopls',
+  -- 'goimports',
+  -- 'gofumpt',
+  -- 'gomodifytags',
+  -- 'impl',
+  -- 'golangci-lint',
+  -- 'delve',
+  -- 'gopls',
 
   'hadolint', -- linter docker
 
